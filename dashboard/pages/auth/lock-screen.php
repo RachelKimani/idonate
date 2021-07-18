@@ -31,9 +31,9 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
-    .auth-form-light{
+    /*.auth-form-light{
       background: transparent !important;
-    }
+    }*/
   </style>
 </head>
 
