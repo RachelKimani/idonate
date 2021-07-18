@@ -22,23 +22,25 @@
 
         <div class="row content">
           <div class="col-lg-6">
+            <center><img src="../assets/img/idonate_logo.png" alt="Logo" height="250px"></center>
             <h2>Tip#1</h2>
             <h3>iDonate is a digital information system that helps ensure the provision of safe blood.</h3>
+
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+              iDonate is a digital platform that aids in keeping records from donation through transfusion.
+              These records are then used in making critical decisions in various stages.
+              To ensure transparency, iDonate employs blockchain technology.
+              <br>Our core values are:
             </p>
             <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
+              <li><i class="ri-check-double-line"></i> Blood Safety</li>
+              <li><i class="ri-check-double-line"></i> Donor and Patient Confidentaility </li>
+              <li><i class="ri-check-double-line"></i> Transparency</li>
             </ul>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              iDonate also allows groups or individuals to host blood drives.
             </p>
           </div>
         </div>

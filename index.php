@@ -69,9 +69,11 @@
       <div class="container">
 
         <div class="row content">
-          <div class="col-lg-6">
-            <h2>About Us</h2>
-            <h3>iDonate is a digital information system that helps ensure the provision of safe blood.</h3>
+          <div class="col-lg-6">  <h2>About Us</h2>
+            <center><img src="assets/img/idonate_logo.png" alt="Logo" height="250px"></center>
+
+            <h3 class="text-center">iDonate is a digital information system that helps ensure the provision of safe blood.</h3>
+
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <p>
@@ -206,7 +208,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="icon-box">
-              <i class="bi bi-briefcase"></i>
+              <i class="bi bi-syringe"><img src="assets/img/ico/donate.png" alt="" width="80px" height="80px"></i>
               <h4><a href="#">1. Donation</a></h4>
               <p>
                 Register or login to our system to do a rapid test and book an appointment.
@@ -219,7 +221,7 @@
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="bi bi-card-checklist"></i>
+              <i class="bi"><img src="assets/img/ico/screen.png" alt="" width="80px" height="80px"></i>
               <h4><a href="#">2. Processing</a></h4>
               <p>
                 At the blood bank, information about your donation is scanned into a computer database.
@@ -230,7 +232,7 @@
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="bi bi-bar-chart"></i>
+              <i class="bi"><img src="assets/img/ico/test.png" alt="" width="80px" height="80px"></i>
               <h4><a href="#">3. Testing</a></h4>
               <p>
                 In parallel with Step 2, your test tubes arrive at a testing laboratory.
@@ -242,7 +244,7 @@
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="bi bi-binoculars"></i>
+              <i class="bi"><img src="assets/img/ico/storage.png" alt="" width="80px" height="80px"></i>
               <h4><a href="#">4. Storage</a></h4>
               <p>
                 When test results are received, units suitable for transfusion are labeled and stored.
@@ -254,7 +256,7 @@
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="bi bi-brightness-high"></i>
+              <i class="bi"><img src="assets/img/ico/distribution.png" alt="" width="80px" height="80px"></i>
               <h4><a href="#">5. Distribution</a></h4>
               <p>
                 Blood is available to be shipped to hospitals 24 hours a day, 7 days a week.
@@ -264,7 +266,7 @@
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="bi bi-calendar4-week"></i>
+              <i class="bi"><img src="assets/img/ico/refresh.png" alt="" width="80px" height="80px"></i>
               <h4><a href="#">6. Transfusion</a></h4>
               <p>
                 An ill or injured patient arrives at a hospital or treatment center.
@@ -277,6 +279,48 @@
         <hr>
       </div>
     </section><!-- End Services Section -->
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+        <div class="row">
+          <h3 class="text-center">Testimonials</h3><p></p>
+          <p class="text-center">What people say about iDonate</p>
+          <div class="row">
+          <div class="col-lg-6">
+            <div class="testimonial-item mt-4 mt-lg-0">
+              <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+              <h3>Sara Wilsson</h3>
+              <h4>Happy Recipient</h4>
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                My son is back home thanks to iDonate.Finding blood was super easy due to the vast info available on the platform
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="testimonial-item">
+              <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+              <h3>Jena Karlis</h3>
+              <h4>Donor</h4>
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Donation is now very fast and efficient. I don't have to go back to the center to collect results. Thanks to iDonate
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+        </div>
+        <hr>
+      </div>
+    </section><!-- End Testimonials Section -->
+
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
