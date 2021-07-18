@@ -17,7 +17,7 @@
                 “All hands on deck. Blood is needed. There's no substitute for it. We all have to do the work to make sure it is widely available.”
                 <br>Giwa-Tubosun
               </p>
-              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Donate Now</a>
+              <a href="dashboard/" class="btn-get-started animate__animated animate__fadeInUp scrollto">Donate Now</a>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
                 “Mikono yote juu ya staha. Damu inahitajika. Hakuna mbadala wake. Sisi sote lazima tufanye kazi ili kuhakikisha inapatikana.”
                 <br>Giwa-Tubosun
               </p>
-              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Changia Sasa</a>
+              <a href="dashboard/" class="btn-get-started animate__animated animate__fadeInUp scrollto">Changia Sasa</a>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
               <p class="animate__animated animate__fadeInUp">“Todas las manos en el mazo. Se necesita sangre. No hay sustituto para eso. Todos tenemos que hacer el trabajo para asegurarnos de que esté ampliamente disponible.”
                 <br>Giwa-Tubosun
               </p>
-              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Done ahora</a>
+              <a href="dashboard/" class="btn-get-started animate__animated animate__fadeInUp scrollto">Done ahora</a>
             </div>
           </div>
         </div>

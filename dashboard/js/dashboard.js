@@ -182,16 +182,16 @@
       var SalesChart = new Chart(SalesChartCanvas, {
         type: 'bar',
         data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+            labels: ["2017", "2018", "2019", "2020", "2021"],
           datasets: [{
-              label: 'Offline Sales',
-              data: [480, 230, 470, 210, 330],
-              backgroundColor: '#98BDFF'
+              label: 'Donation',
+              data: [2, 1, 0, 0, 1],
+              backgroundColor: '#d9232d'
             },
             {
-              label: 'Online Sales',
-              data: [400, 340, 550, 480, 170],
-              backgroundColor: '#4B49AC'
+              label: 'Transfusion',
+              data: [0, 0, 0, 1, 0],
+              backgroundColor: '#ff313d'
             }
           ]
         },
@@ -218,9 +218,9 @@
               ticks: {
                 display: true,
                 min: 0,
-                max: 560,
+                max: 5,
                 callback: function(value, index, values) {
-                  return  value + '$' ;
+                  return  value + 'Pint(s)' ;
                 },
                 autoSkip: true,
                 maxTicksLimit: 10,
@@ -257,16 +257,16 @@
       var SalesChart = new Chart(SalesChartCanvas, {
         type: 'bar',
         data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+          labels: ["2017", "2018", "2019", "2020", "2021"],
           datasets: [{
-              label: 'Offline Sales',
-              data: [480, 230, 470, 210, 330],
-              backgroundColor: '#98BDFF'
+              label: 'Donation',
+              data: [2, 1, 0, 0, 1],
+              backgroundColor: '#d9232d'
             },
             {
-              label: 'Online Sales',
-              data: [400, 340, 550, 480, 170],
-              backgroundColor: '#4B49AC'
+              label: 'Transfusion',
+              data: [0, 0, 0, 1, 0],
+              backgroundColor: '#ff313d'
             }
           ]
         },
@@ -295,7 +295,7 @@
                 min: 0,
                 max: 500,
                 callback: function(value, index, values) {
-                  return  value + '$' ;
+                  return  value + 'Pint(s)' ;
                 },
                 autoSkip: true,
                 maxTicksLimit: 10,
@@ -348,14 +348,14 @@
           arc: {
               borderWidth: 4
           }
-        },      
+        },
         legend: {
           display: false
         },
         tooltips: {
           enabled: true
         },
-        legendCallback: function(chart) { 
+        legendCallback: function(chart) {
           var text = [];
           text.push('<div class="report-chart">');
             text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Offline sales</p></div>');
@@ -376,17 +376,17 @@
           var width = chart.chart.width,
               height = chart.chart.height,
               ctx = chart.chart.ctx;
-      
+
           ctx.restore();
           var fontSize = 3.125;
           ctx.font = "500 " + fontSize + "em sans-serif";
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#13381B";
-      
+
           var text = "90",
               textX = Math.round((width - ctx.measureText(text).width) / 2),
               textY = height / 2;
-      
+
           ctx.fillText(text, textX, textY);
           ctx.save();
         }
@@ -421,14 +421,14 @@
           arc: {
               borderWidth: 4
           }
-        },      
+        },
         legend: {
           display: false
         },
         tooltips: {
           enabled: true
         },
-        legendCallback: function(chart) { 
+        legendCallback: function(chart) {
           var text = [];
           text.push('<div class="report-chart">');
             text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Offline sales</p></div>');
@@ -449,17 +449,17 @@
           var width = chart.chart.width,
               height = chart.chart.height,
               ctx = chart.chart.ctx;
-      
+
           ctx.restore();
           var fontSize = 3.125;
           ctx.font = "500 " + fontSize + "em sans-serif";
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#fff";
-      
+
           var text = "90",
               textX = Math.round((width - ctx.measureText(text).width) / 2),
               textY = height / 2;
-      
+
           ctx.fillText(text, textX, textY);
           ctx.save();
         }
@@ -495,14 +495,14 @@
           arc: {
               borderWidth: 4
           }
-        },      
+        },
         legend: {
           display: false
         },
         tooltips: {
           enabled: true
         },
-        legendCallback: function(chart) { 
+        legendCallback: function(chart) {
           var text = [];
           text.push('<div class="report-chart">');
             text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Offline sales</p></div>');
@@ -523,17 +523,17 @@
           var width = chart.chart.width,
               height = chart.chart.height,
               ctx = chart.chart.ctx;
-      
+
           ctx.restore();
           var fontSize = 3.125;
           ctx.font = "600 " + fontSize + "em sans-serif";
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#000";
-      
+
           var text = "76",
               textX = Math.round((width - ctx.measureText(text).width) / 2),
               textY = height / 2;
-      
+
           ctx.fillText(text, textX, textY);
           ctx.save();
         }
@@ -568,14 +568,14 @@
           arc: {
               borderWidth: 4
           }
-        },      
+        },
         legend: {
           display: false
         },
         tooltips: {
           enabled: true
         },
-        legendCallback: function(chart) { 
+        legendCallback: function(chart) {
           var text = [];
           text.push('<div class="report-chart">');
             text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Offline sales</p></div>');
@@ -596,17 +596,17 @@
           var width = chart.chart.width,
               height = chart.chart.height,
               ctx = chart.chart.ctx;
-      
+
           ctx.restore();
           var fontSize = 3.125;
           ctx.font = "600 " + fontSize + "em sans-serif";
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#fff";
-      
+
           var text = "76",
               textX = Math.round((width - ctx.measureText(text).width) / 2),
               textY = height / 2;
-      
+
           ctx.fillText(text, textX, textY);
           ctx.save();
         }
@@ -635,10 +635,10 @@
         { "data": "Quote" },
         { "data": "Product" },
         { "data": "Business" },
-        { "data": "Policy" }, 
-        { "data": "Premium" }, 
-        { "data": "Status" }, 
-        { "data": "Updated" }, 
+        { "data": "Policy" },
+        { "data": "Premium" },
+        { "data": "Status" },
+        { "data": "Updated" },
         {
           "className":      'details-control',
           "orderable":      false,
@@ -676,6 +676,6 @@ $('#example tbody').on('click', 'td.details-control', function () {
       tr.addClass('shown');
   }
 } );
-  
+
   });
 })(jQuery);

@@ -116,6 +116,9 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+.main-panel {
+  margin-left: auto;
+}
 @-moz-keyframes flash {
   0% {
     opacity: 1;
@@ -11393,7 +11396,7 @@ fieldset:disabled .wizard > .actions a,
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(75, 73, 172, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
 }
 
 .btn-outline-primary.disabled, .btn-outline-primary:disabled {
@@ -11410,7 +11413,7 @@ fieldset:disabled .wizard > .actions a,
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(75, 73, 172, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
 }
 
 .btn-outline-secondary, .editable-container.editable-inline .editableform .control-group .editable-buttons .editable-cancel {
@@ -14200,7 +14203,7 @@ a.badge-primary:hover, a.badge-primary:focus {
 
 a.badge-primary:focus, a.badge-primary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(75, 73, 172, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
 }
 
 .badge-secondary {
@@ -20634,7 +20637,7 @@ code {
 
 .alert-primary {
   color: #393783;
-  background-color: rgba(75, 73, 172, 0.2);
+  background-color: rgba(255, 0, 0, 0.2);
   border-color: #45439e;
 }
 
@@ -21282,9 +21285,9 @@ code {
 
 /* inverse buttons */
 .btn-inverse-primary {
-  background-color: rgba(75, 73, 172, 0.2);
+  background-color: rgba(255, 0, 0, 0.2);
   background-image: none;
-  border-color: rgba(75, 73, 172, 0);
+  border-color: rgba(255, 0, 0, 0);
 }
 
 .btn-inverse-primary:not(.btn-inverse-light) {
@@ -21298,7 +21301,7 @@ code {
 }
 
 .btn-inverse-primary.focus, .btn-inverse-primary:focus {
-  box-shadow: 0 0 0 3px rgba(75, 73, 172, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.5);
 }
 
 .btn-inverse-primary.disabled, .btn-inverse-primary:disabled {
@@ -22113,7 +22116,7 @@ code {
 }
 
 .card-inverse-primary {
-  background: rgba(75, 73, 172, 0.2);
+  background: rgba(255, 0, 0, 0.2);
   border: 1px solid #45439e;
   color: #393783;
 }
@@ -26032,7 +26035,7 @@ body.avgrund-active {
   float: left;
   width: 49%;
   margin-right: 2%;
-  background: rgba(75, 73, 172, 0.2);
+  background: rgba(255, 0, 0, 0.2);
 }
 
 .grid-col--4 {
@@ -27475,7 +27478,7 @@ table.dataTable tbody td.select-checkbox:after {
 .br-theme-bars-pill .br-widget a,
 .br-theme-bars-reversed .br-widget a,
 .br-theme-bars-horizontal .br-widget a {
-  background-color: rgba(75, 73, 172, 0.6);
+  background-color: rgba(255, 0, 0, 0.6);
   color: #d9232d;
 }
 
@@ -27492,8 +27495,8 @@ table.dataTable tbody td.select-checkbox:after {
 }
 
 .br-theme-bars-square .br-widget a {
-  border-color: rgba(75, 73, 172, 0.6);
-  color: rgba(75, 73, 172, 0.6);
+  border-color: rgba(255, 0, 0, 0.6);
+  color: rgba(255, 0, 0, 0.6);
 }
 
 .br-theme-bars-square .br-widget a.br-selected, .br-theme-bars-square .br-widget a.br-active {
@@ -28803,7 +28806,7 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-brand-wrapper .navbar-brand {
-  color: #27367f;
+  color: #d9232d;
   font-size: 1.5rem;
   margin-right: 0;
   padding: .25rem 0;
