@@ -90,6 +90,10 @@
     </div>
     <p></p>
   </main><!-- End #main -->
-
+  <script>
+    document.title = "iDonate | Contact Us";
+    $(".nsd").removeClass("active");
+    $("#contact").addClass("active");
+  </script>
   <!-- ======= Footer ======= -->
   <?php include 'footer.php'; ?>

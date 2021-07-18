@@ -27,4 +27,11 @@
 </div>
 </section>
 </main><!-- End #main -->
+<script>
+  document.title = "iDonate | Locations";
+  $(".nsd").removeClass("active");
+  $("#about").addClass("active");
+  $("#location").addClass("active");
+
+</script>
 <?php include 'footer.php'; ?>

@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/favicon.ico" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <script src="../assets/js/jquery-3.3.1.min.js"></script>
 
@@ -59,14 +59,14 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="../index.php" class="active" class="acl">Home</a></li>
+          <li><a href="../index.php" class="nsd" class="acl" id="home">Home</a></li>
 
-          <li class="dropdown"><a href="#" class="acl"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#" class="acl" class="nsd" id="about"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="about.php" >About</a></li>
+              <li><a href="about.php" class="nsd" id="abt">About</a></li>
 
-              <li><a href="testimonials.php" >Testimonials</a></li>
-              <li><a href="locations.php" >Locations</a></li>
+              <li><a href="testimonials.php" class="nsd" id="testimonials">Testimonials</a></li>
+              <li><a href="locations.php" class="nsd" id="location">Locations</a></li>
 
               <li class="dropdown"><a href="#" ><span>Events</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -78,12 +78,12 @@
               </li>
             </ul>
           </li>
-          <li><a href="portfolio.php" class="acl">Gallery</a></li>
-          <li><a href="faq.php" class="acl">FAQs</a></li>
-          <li><a href="blog.php" class="acl">Blog</a></li>
+          <li><a href="portfolio.php" class="acl" class="nsd" id="gallery">Gallery</a></li>
+          <li><a href="faq.php" class="acl" class="nsd" id="faq">FAQs</a></li>
+          <li><a href="blog.php" class="acl" class="nsd" id="blog">Blog</a></li>
 
-          <li><a href="contact.php" class="acl">Contact</a></li>
-          <li><a href="../index.php" class="getstarted" class="acl">Get Started</a></li>
+          <li><a href="contact.php" class="acl" class="nsd" id="contact">Contact</a></li>
+          <li><a href="../index.php" class="getstarted" class="acl">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

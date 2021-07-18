@@ -155,5 +155,9 @@
     </section><!-- End Frequently Asked Questions Section -->
 
   </main><!-- End #main -->
-
+  <script>
+    document.title = "iDonate | FAQs";
+    $(".nsd").removeClass("active");
+    $("#faq").addClass("active");
+  </script>
   <?php include 'footer.php'; ?>

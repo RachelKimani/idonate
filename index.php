@@ -451,5 +451,9 @@ if ($(window).scrollTop() >= 50) {
 }
 });
   </script>
-
+  <script>
+    document.title = "iDonate | Home";
+    $(".nsd").removeClass("active");
+    $("#home").addClass("active");
+  </script>
 <?php include 'footer.php'; ?>

@@ -153,4 +153,9 @@
 
 
   </main><!-- End #main -->
+  <script>
+    document.title = "iDonate | Gallery";
+    $(".nsd").removeClass("active");
+    $("#gallery").addClass("active");
+  </script>
 <?php include 'footer.php'; ?>

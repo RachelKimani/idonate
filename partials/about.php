@@ -199,4 +199,10 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
+  <script>
+    document.title = "iDonate | About";
+    $(".nsd").removeClass("active");
+    $("#about").addClass("active");
+    $("#abt").addClass("active");
+  </script>
   <?php include 'footer.php'; ?>

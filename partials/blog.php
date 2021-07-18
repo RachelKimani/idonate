@@ -200,5 +200,9 @@
     </section><!-- End Blog Section -->
 
   </main><!-- End #main -->
-
+  <script>
+    document.title = "iDonate | Blog";
+    $(".nsd").removeClass("active");
+    $("#blog").addClass("active");
+  </script>
   <?php include 'footer.php'; ?>

@@ -106,4 +106,10 @@
     </section><!-- End Testimonials Section -->
 
   </main><!-- End #main -->
+  <script>
+    document.title = "iDonate | Testimonials";
+    $(".nsd").removeClass("active");
+    $("#about").addClass("active");
+    $("#testimonials").addClass("active");
+  </script>
 <?php include 'footer.php'; ?>
