@@ -1,0 +1,159 @@
+.all{
+   background: url("../idonate/images/2.png") center no-repeat;
+    opacity: 1;
+}
+
+.sign-up {
+    position: absolute;
+    top: 1vh;
+    left: 40vw;
+    height: 80vh;
+    max-height: 80vh;
+    width: 60vw;
+    max-width: 60vw;
+    text-align: justify;
+    background-color: rgba(254, 68, 72, 0.91);
+    text-transform: uppercase;
+    transform: translateY(20%);
+    border-radius: 1rem;
+}
+
+.sign-up p {
+    display: block;
+    margin: 2rem 0;
+    font-family: 'Aldrich', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: white;
+}
+
+.sign-up span {
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(254, 68, 72, 0.91);
+    font-weight: bold;
+}
+
+.sign-up-form {
+    position: absolute;
+    width: 80%;
+    left: 15%;
+    max-width: 100%;
+    align-content: center;
+    margin-top: 0.5rem;
+}
+
+.fields label, .fields input {
+    width: 40%;
+    height: 3rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    display: inline-block;
+    margin-left: 6.5%;
+    font-size: 1.2rem;
+}
+
+.fields label {
+    margin-top: 1rem;
+    text-align: left;
+    line-height: 3.5;
+}
+
+.fields input {
+    font-size: 1.6rem;
+    border-bottom: 2px solid gold;
+}
+
+.cta span {
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    border: none;
+    font-weight: bolder;
+}
+
+.btn {
+    height: 4.5rem;
+    width: 35%;
+    margin-top: 1.3rem;
+    margin-right:0;
+    margin-left: 10%;
+}
+
+.login {
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: absolute;
+    left: 15vw;
+    top: 32vh;
+    height: 50vh;
+    max-height: 50vh;
+    width: 30vw;
+    max-width: 30vw;
+    z-index: 1500;
+    opacity: .8;
+    background-color: rgba(254, 68, 72, 0.91);
+    border-radius: .5rem;
+}
+
+.login p {
+    display: block;
+    margin: 2rem 0;
+    font-family: 'Aldrich', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: black;
+}
+
+.login-form label, .login-form input {
+    width: 70%;
+    height: 3rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    display: inline-block;
+    margin-left: 15%;
+    font-size: 1.2rem;
+}
+
+.login label {
+    margin-top: 1rem;
+    text-align: left;
+    line-height: 3.5;
+}
+
+.login-form input {
+    font-size: 1.6rem;
+    border-bottom: 2px rgba(254, 68, 72, 0.91);
+}
+
+.l-cta .btn {
+    display: inline-block;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 2.5rem;
+    outline: none;
+    border: none;
+    background-color: rgb(178, 255, 219);
+}
+
+.l-cta .forgot {
+    display: none;
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    color: crimson;
+    text-decoration: underline;
+}
+
+input:hover, input:focus {
+    border-color: white;
+    transition: border-bottom-color 1s;
+}
