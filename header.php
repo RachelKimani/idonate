@@ -33,9 +33,15 @@
     .alt-color {
       background-color: transparent !important;
     }
-    nav#navbar.navbar.acolor a.acl,nav#navbar.navbar.acolor .bi.mobile-nav-toggle.bi-list{
+    @media only screen and (min-width: 992px) {
+      nav#navbar.navbar.acolor a.acl,nav#navbar.navbar.acolor .bi.mobile-nav-toggle.bi-list{
+        color:white;
+      }
+    }
+    nav#navbar.navbar.acolor i.bi.bi-list.mobile-nav-toggle{
       color:white;
     }
+
 
     nav#navbar.navbar.acolor a.acl.active{
       font-weight: bolder;
@@ -82,7 +88,7 @@
           <li><a href="partials/blog.php" class="acl">Blog</a></li>
 
           <li><a href="partials/contact.php" class="acl">Contact</a></li>
-          <li><a href="dashboard/" class="getstarted" class="acl"><span class="bi bi-person-fill" data-icon="" data-inline="false"></span>&nbspLogin</a></li>
+          <li><a href="dashboard/index.php" class="getstarted" class="acl"><span class="bi bi-person-fill" data-icon="" data-inline="false"></span>&nbspLogin</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
