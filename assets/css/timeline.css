@@ -1,0 +1,35 @@
+/******************* Timeline Demo - 12 *****************/
+.main-timeline12 .timeline{padding:0 2px;position:relative;display:inline-block}
+.main-timeline12 .col-md-2{-ms-flex:0 0 15.666667%;flex:0 0 15.666667%;max-width:15.666667%}
+.main-timeline12 .timeline-icon{display:block;text-align:center;padding:20px 0 55px;z-index:1;position:relative}
+.main-timeline12 .timeline:nth-child(2n) .timeline-icon{padding:55px 0 20px}
+.main-timeline12 .timeline-icon:before{content:"";width:1px;height:75%;background:#d9232d;margin:0 auto;position:absolute;bottom:0;left:0;right:0;z-index:-1;transition:all .3s ease 0s}
+.main-timeline12 .timeline:nth-child(2n) .timeline-icon:before{bottom:auto;top:0}
+.main-timeline12 .timeline:hover .timeline-icon:before{background:#555}
+.main-timeline12 .timeline-icon i{width:45px;height:45px;line-height:45px;border-radius:50%;background:#d9232d;font-size:14px;color:#fff;transition:all .3s ease 0s}
+.main-timeline12 .timeline:hover .timeline-icon i{background:#555;animation:icon-load 2.5s ease 0s infinite}
+.main-timeline12 .border{height:15px;background:#d9232d;margin-bottom:0;transition:all .3s ease 0s}
+.main-timeline12 .timeline:hover .border{background:#555}
+.main-timeline12 .timeline:first-child .border{border-radius:4px 0 0 4px}
+.main-timeline12 .timeline:last-child .border{border-radius:0 4px 4px 0}
+.main-timeline12 .timeline:nth-child(2n) .border{margin:18px 0 0}
+.main-timeline12 .timeline-content{padding:15px;border:1px solid #ddd;background:#f9f9f9;border-radius:3px;transition:all .3s ease 0s}
+.main-timeline12 .timeline:hover .timeline-content{background:#555}
+.main-timeline12 .title{font-size:18px;font-weight:700;color:#d9232d;text-transform:uppercase;margin:0 0 10px;transition:all .3s ease 0s}
+.main-timeline12 .timeline:hover .title{color:#fff}
+.main-timeline12 .timeline-content .description{font-size:14px;color:#888;margin:0;transition:all .3s ease 0s}
+.main-timeline12 .timeline:hover .description{color:#fff}
+@keyframes icon-load{0%{transform:rotate(-12deg)}
+8%{transform:rotate(12deg)}
+10%,28%,30%,48%,50%,68%{transform:rotate(24deg)}
+18%,20%,38%,40%,58%,60%{transform:rotate(-24deg)}
+100%,75%{transform:rotate(0)}
+}
+@media only screen and (max-width:990px){.main-timeline12 .timeline{margin-bottom:20px}
+}
+@media only screen and (max-width:767px){.main-timeline12 .timeline-icon{padding-top:0}
+.main-timeline12 .timeline:nth-child(2n) .timeline-icon{padding-bottom:0}
+.main-timeline12 .border{margin-bottom:10px}
+.main-timeline12 .timeline:nth-child(2n) .border{margin:10px 0 0}
+.main-timeline12 .timeline-content{text-align:center}
+}
