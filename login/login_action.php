@@ -5,7 +5,7 @@
   if(isset($_POST['login'])){
     $email = trim($_POST['email']);
     $privateKey = trim($_POST['privateKey']);
-    $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+    $password = trim($_POST['password']);
     
 
     login($email,$password,$connect,$key='');
