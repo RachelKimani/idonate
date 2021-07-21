@@ -1,3 +1,2 @@
-<?php
-header("location: login_register/")
- ?>
+
+$email,$password,$connect,$key=''
