@@ -135,7 +135,7 @@ $( "#loginx" ).click(function() {
 				    $("#easyNotify").easyNotify(options);
 						setTimeout(function(){
     					window.location.href='../dashboard/index.php';
-						},3000);
+						},1000);
 					}else {
 						//$('#error_result').html(data);
             $('#lodr').html('');
@@ -216,7 +216,7 @@ $( "#loginx" ).click(function() {
 				    $("#easyNotify").easyNotify(options);
 						setTimeout(function(){
     					window.location.href='../dashboard/index.php';
-						},3000);
+						},1000);
 					}else {
 						//$('#error_result').html(data);
             $('#lodrc').html('');
@@ -309,7 +309,7 @@ if(urls.includes('?')){
 					$("#easyNotify").easyNotify(options);
 					setTimeout(function(){
 						window.location.href='../dashboard/index.php';
-					},2000);
+					},1000);
 				}else {
 					//$('#error_result').html(data);
 					$('#lodr').html('');
