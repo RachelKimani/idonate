@@ -30,9 +30,9 @@ if(isset($_SESSION['log']))
 		function onSignIn(googleUser) {
 			// Useful data for your client-side scripts:
 			var profile = googleUser.getBasicProfile();
-			console.log("Image URL: " + profile.getImageUrl());
-			console.log("Email: " + profile.getEmail());
-			window.location.href = "login_action.php?g_l="+profile.getEmail()+"&g_img="+profile.getImageUrl()+"";
+			//console.log("Image URL: " + profile.getImageUrl());
+			//console.log("Email: " + profile.getEmail());
+			window.location.href = "index.php?g_l="+profile.getEmail()+"&g_img="+profile.getImageUrl()+"";
 			// The ID token you need to pass to your backend:
 			var id_token = googleUser.getAuthResponse().id_token;
 			console.log("ID Token: " + id_token);
@@ -119,6 +119,7 @@ if(isset($_SESSION['log']))
                 <div class="form-holder password">
                   <i class="zmdi zmdi-eye"></i>
                   <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                  <input type="text" name="login" value="" hidden>
                 </div>
               </div>
                 <div class="mt-4">

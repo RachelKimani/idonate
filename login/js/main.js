@@ -1,5 +1,31 @@
 $(function(){
 	var form = $("#wizardb");
+	var form2 = $("#wizardc");
+	form2.validate({
+		errorPlacement: function errorPlacement(error, element) {
+				 element.before(error);
+		},
+		rules: {
+
+				password : {
+					required: true,
+					minlength : 8
+				}
+			},
+			onfocusout: function(element) {
+					$(element).valid();
+			},
+			highlight : function(element, errorClass, validClass) {
+					$(element.form).find('.actions').addClass('form-error');
+					$(element).removeClass('valid');
+					$(element).addClass('error');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+					$(element.form).find('.actions').removeClass('form-error');
+					$(element).removeClass('error');
+					$(element).addClass('valid');
+			}
+	});
 	form.validate({
 			errorPlacement: function errorPlacement(error, element) {
 					 element.before(error);
@@ -48,6 +74,11 @@ $(function(){
     //alert( "Handler for .click() called." );
 
 });
+$( "#loginx" ).click(function() {
+	form2.validate().settings.ignore = ":disabled,:hidden";
+	return form2.valid();
+	return true;
+});
     //process form
     $( "#wizardb" ).submit(function( event ) {
       event.preventDefault();
@@ -59,6 +90,21 @@ $(function(){
 				data:form_data,
 				success:function(data)
 				{
+					var msg,title;
+					if(data == 'success'){
+						title = 'Login Success';
+						msg = 'You will be redirected to your account';
+
+					} else if (data == 'wrongpwd') {
+						title = 'Login Failed';
+						msg = 'Wrong Password. Please check your password or click on forgot password to reset';
+					} else if (data == 'disabled') {
+						title = 'Login Failed';
+						msg = 'Your account is not active. Check your email address for an activation link';
+					} else if (data == 'success1') {
+						title = 'Login Failed';
+						msg = 'Internal server error. Please reload and try again.';
+					}
 					if(data=='success'){
 						$('#lodr').html('');
 						//show toast
@@ -66,8 +112,8 @@ $(function(){
 					    'use strict';
 					    resetToastPosition();
 					    $.toast({
-					      heading: 'Login Success',
-					      text: 'Rerouting...',
+					      heading: title,
+					      text: msg,
 					      showHideTransition: 'slide',
 					      icon: 'success',
 					      loaderBg: '#f96868',
@@ -77,9 +123,9 @@ $(function(){
 					  };
 						showSuccessToast1();
             var options = {
-				      title: "Login Success",
+				      title: title,
 				      options: {
-				        body: 'Rerouting...',
+				        body: msg,
 				        icon: '../dashboard/images/idonate_logo.png',
 				        lang: 'en-US'
 				        //onClick: myFunction
@@ -88,7 +134,7 @@ $(function(){
 				    console.log(options);
 				    $("#easyNotify").easyNotify(options);
 						setTimeout(function(){
-    					window.location.href='../dashboard/';
+    					window.location.href='../dashboard/index.php';
 						},3000);
 					}else {
 						//$('#error_result').html(data);
@@ -97,11 +143,11 @@ $(function(){
 					    'use strict';
 					    resetToastPosition();
 					    $.toast({
-					      heading: 'Login Failed',
-					      text: data,
+					      heading: title,
+					      text: msg,
 					      showHideTransition: 'slide',
 					      icon: 'error',
-					      loaderBg: '#f2a654',
+					      //loaderBg: '#f2a654',
 					      position: 'top-right',
 								hideAfter: 5000
 					    })
@@ -111,6 +157,183 @@ $(function(){
 				}
 			})
     });
+		//lock
+		$( "#wizardc" ).submit(function( event ) {
+      event.preventDefault();
+      $('#lodrc').html("<i class='fa fa-spinner fa-pulse text-right'></i><span class='sr-only'>Loading...</span>");
+			//var form_data = $('#wizardc').serialize();
+			var password = document.getElementById('password').value;
+			var email = document.getElementById('email').value;
+			var login ='login';
+			$.ajax({
+				url:"login_action.php",
+				method:"POST",
+				data: { password:password,email:email,login:login},
+				success:function(data)
+				{
+					var msg,title;
+					if(data == 'success'){
+						title = 'Login Success';
+						msg = 'You will be redirected to your account';
+
+					} else if (data == 'wrongpwd') {
+						title = 'Login Failed';
+						msg = 'Wrong Password. Please check your password or click on forgot password to reset';
+					} else if (data == 'disabled') {
+						title = 'Login Failed';
+						msg = 'Your account is not active. Check your email address for an activation link';
+					} else if (data == 'success1') {
+						title = 'Login Failed';
+						msg = 'Internal server error. Please reload and try again.';
+					}
+					if(data=='success'){
+						$('#lodrc').html('');
+						//show toast
+						showSuccessToast1 = function() {
+					    'use strict';
+					    resetToastPosition();
+					    $.toast({
+					      heading: title,
+					      text: msg,
+					      showHideTransition: 'slide',
+					      icon: 'success',
+					      loaderBg: '#f96868',
+					      position: 'top-right',
+								hideAfter: 3000
+					    })
+					  };
+						showSuccessToast1();
+            var options = {
+				      title: title,
+				      options: {
+				        body: msg,
+				        icon: '../dashboard/images/idonate_logo.png',
+				        lang: 'en-US'
+				        //onClick: myFunction
+				      }
+				    };
+				    console.log(options);
+				    $("#easyNotify").easyNotify(options);
+						setTimeout(function(){
+    					window.location.href='../dashboard/index.php';
+						},3000);
+					}else {
+						//$('#error_result').html(data);
+            $('#lodrc').html('');
+						showDangerToast1 = function() {
+					    'use strict';
+					    resetToastPosition();
+					    $.toast({
+					      heading: title,
+					      text: msg,
+					      showHideTransition: 'slide',
+					      icon: 'error',
+					      //loaderBg: '#f2a654',
+					      position: 'top-right',
+								hideAfter: 5000
+					    })
+					  };
+						showDangerToast1();
+					}
+				}
+			})
+    });
+//google login
+
+let urls = window.location.href;
+function getParameterByName(name, url = urls) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+if(urls.includes('?')){
+	if(urls.indexOf('?g_l=') != -1){
+		var g_l = getParameterByName('g_l');
+		var g_img =getParameterByName('g_img');
+		window.history.pushState("", "", './');
+		$('#lodr').html("<i class='fa fa-spinner fa-pulse text-right'></i><span class='sr-only'>Loading...</span>");
+		$.ajax({
+			url:"login_action.php",
+			method:"GET",
+			data: { g_l:g_l,g_img:g_img},
+			success:function(data)
+			{
+				var msg,title;
+				if(data == 'success'){
+					title = 'Login Success';
+					msg = 'You will be redirected to your account';
+
+				} else if (data == 'wrongpwd') {
+					title = 'Login Failed';
+					msg = 'Wrong Password. Please check your password or click on forgot password to reset';
+				} else if (data == 'disabled') {
+					title = 'Login Failed';
+					msg = 'Your account is not active. Check your email address for an activation link';
+				} else if (data == 'success1') {
+					title = 'Login Failed';
+					msg = 'Internal server error. Please reload and try again.';
+				} else if (data == 'notfound') {
+					title = 'Login Failed';
+					msg = 'User does not exist';
+				}
+				if(data=='success'){
+					$('#lodr').html('');
+					//show toast
+					showSuccessToast1 = function() {
+						'use strict';
+						resetToastPosition();
+						$.toast({
+							heading: title,
+							text: msg,
+							showHideTransition: 'slide',
+							icon: 'success',
+							loaderBg: '#f96868',
+							position: 'top-right',
+							hideAfter: 3000
+						})
+					};
+					showSuccessToast1();
+					var options = {
+						title: title,
+						options: {
+							body: msg,
+							icon: '../dashboard/images/idonate_logo.png',
+							lang: 'en-US'
+							//onClick: myFunction
+						}
+					};
+					console.log(options);
+					$("#easyNotify").easyNotify(options);
+					setTimeout(function(){
+						window.location.href='../dashboard/index.php';
+					},2000);
+				}else {
+					//$('#error_result').html(data);
+					$('#lodr').html('');
+					showDangerToast1 = function() {
+						'use strict';
+						resetToastPosition();
+						$.toast({
+							heading: title,
+							text: msg,
+							showHideTransition: 'slide',
+							icon: 'error',
+							//loaderBg: '#f2a654',
+							position: 'top-right',
+							hideAfter: 5000
+						})
+					};
+					showDangerToast1();
+				}
+			}
+		})
+	}
+}else{
+	//alert('No Parameters in URL');
+}
 //caps lock
 $(document).ready(function(){
             $('#password').keypress(function(e) {
