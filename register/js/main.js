@@ -89,9 +89,9 @@ $(function(){
 								name +=" ";
 								name+=document.getElementById('lastName').value;
 								document.getElementById('name1').innerHTML = name;
-								document.getElementById('email1').innerHTML =document.getElementById('email').value;
-								document.getElementById('phone1').innerHTML =document.getElementById('phone').value;
-								document.getElementById('address1').innerHTML =document.getElementById('address').value;
+								document.getElementById('email1').innerHTML = document.getElementById('email').value;
+								document.getElementById('phone1').innerHTML = document.getElementById('phone').value;
+								document.getElementById('address1').innerHTML = document.getElementById('address').value;
             }
 						form.validate().settings.ignore = ":disabled,:hidden";
 						return form.valid();
@@ -212,4 +212,6 @@ $(document).ready(function(){
                 }
             });
         });
+//datepicker
+
 })

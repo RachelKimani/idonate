@@ -1,5 +1,5 @@
 $(function(){
-	var form = $("#wizard");
+	var form = $("#wizardb");
 	form.validate({
 			errorPlacement: function errorPlacement(error, element) {
 					 element.before(error);
@@ -11,24 +11,14 @@ $(function(){
 						minlength : 8
 					},
 					email :{
-						required: true,
-						email: true,
-						remote: {
-                        url: "check_email.php",
-                        type: "post"
-                     }
-					}
-			},
-			//custom messages for db validation
-			messages: {
+						required: true
+			}},
+
+      messages: {
                 email: {
-                    remote: "Email already in use!"
-                },
-								username: {
-                    remote: "Username is taken!"
+                    remote: "Username/Email does not exist!"
                 }
-            }
-			,
+            },
 			onfocusout: function(element) {
 					$(element).valid();
 			},
@@ -43,110 +33,53 @@ $(function(){
 					$(element).addClass('valid');
 			}
 	});
-	form.steps({
-        headerTag: "h4",
-        bodyTag: "section",
-        transitionEffect: "fade",
-        enableAllSteps: true,
-        transitionEffectSpeed: 300,
-        labels: {
-            next: "Continue",
-            previous: "Back",
-            finish: 'Submit',
-						current : ''
-        },
-        onStepChanging: function (event, currentIndex, newIndex) {
-					if ( newIndex === 0 ) {
-							document.getElementById('cnt').innerHTML="1";
-					}
-						if ( newIndex === 1 ) {
-								document.getElementById('cnt').innerHTML="2";
-						}
-            if ( newIndex === 2 ) {
-								document.getElementById('cnt').innerHTML="3";
-                //$('.steps ul li:nth-child(3) a img').attr('src','images/step-3-active.png');
-								var name = document.getElementById('firstName').value;
-								name +=" ";
-								name+=document.getElementById('lastName').value;
-								document.getElementById('name1').innerHTML = name;
-								document.getElementById('email1').innerHTML =document.getElementById('email').value;
-								document.getElementById('phone1').innerHTML =document.getElementById('phone').value;
-								document.getElementById('address1').innerHTML =document.getElementById('address').value;
-            }
-						form.validate().settings.ignore = ":disabled,:hidden";
-						return form.valid();
-            return true;
-        }
-    });
-    // Custom Button Jquery Steps
-    $('.forward').click(function(){
-    	$("#wizard").steps('next');
-    })
-    $('.backward').click(function(){
-        $("#wizard").steps('previous');
-    })
-    // Click to see password
-    $('.password i').click(function(){
-        if ( $('.password input').attr('type') === 'password' ) {
-            $(this).next().attr('type', 'text');
-        } else {
-            $('.password input').attr('type', 'password');
-        }
-    })
-		// Count input
-    $(".quantity span").on("click", function() {
+  $( "#login" ).click(function() {
+    $('#email').rules('add', {
 
-        var $button = $(this);
-        var oldValue = $button.parent().find("input").val();
+      remote: {
+                  url: "check_email.php",
+                  type: "post"
+               }
+    }
+  );
+    form.validate().settings.ignore = ":disabled,:hidden";
+    return form.valid();
+    return true;
+    //alert( "Handler for .click() called." );
 
-        if ($button.hasClass('plus')) {
-          var newVal = parseFloat(oldValue) + 1;
-        } else {
-           // Don't allow decrementing below zero
-          if (oldValue > 0) {
-            var newVal = parseFloat(oldValue) - 1;
-            } else {
-            newVal = 0;
-          }
-        }
-        $button.parent().find("input").val(newVal);
-    });
-		//process form
-		document.body.addEventListener("click", function(e) {
-	// e.target was the clicked element
-	if(e.target && e.target.nodeName == "A") {
-		var tgt = e.target.innerText;
-		if(tgt.toLowerCase() == "submit"){
-			$('#error_result').html("<i class='fa fa-spinner fa-pulse text-right'></i><span class='sr-only'>Loading...</span>&nbspProcessing. Please Wait ...");
-			var form_data = $('#wizard').serialize();
+});
+    //process form
+    $( "#wizardb" ).submit(function( event ) {
+      event.preventDefault();
+      $('#lodr').html("<i class='fa fa-spinner fa-pulse text-right'></i><span class='sr-only'>Loading...</span>");
+			var form_data = $('#wizardb').serialize();
 			$.ajax({
-				url:"register_action.php",
+				url:"login_action.php",
 				method:"POST",
 				data:form_data,
 				success:function(data)
 				{
 					if(data=='success'){
-						$('#error_result').html(data);
+						$('#lodr').html('');
 						//show toast
 						showSuccessToast1 = function() {
 					    'use strict';
 					    resetToastPosition();
 					    $.toast({
-					      heading: 'Registration Success',
-					      text: 'Check your email for an activation link. Can\'t find it? Check the spam folder<br>Redirecting to login...',
+					      heading: 'Login Success',
+					      text: 'Rerouting...',
 					      showHideTransition: 'slide',
 					      icon: 'success',
 					      loaderBg: '#f96868',
 					      position: 'top-right',
-								hideAfter: 5000
+								hideAfter: 3000
 					    })
 					  };
 						showSuccessToast1();
-						//Notify
-						var options = {
-				      title: "Registration Success",
+            var options = {
+				      title: "Login Success",
 				      options: {
-				        body: 'Check your email for an activation link. Can\'t find it? Check the spam folder',
+				        body: 'Rerouting...',
 				        icon: '../dashboard/images/idonate_logo.png',
 				        lang: 'en-US'
 				        //onClick: myFunction
@@ -155,15 +88,16 @@ $(function(){
 				    console.log(options);
 				    $("#easyNotify").easyNotify(options);
 						setTimeout(function(){
-    					window.location.href='../login?rs';
-						},5000);
+    					window.location.href='../dashboard/';
+						},3000);
 					}else {
-						$('#error_result').html(data);
+						//$('#error_result').html(data);
+            $('#lodr').html('');
 						showDangerToast1 = function() {
 					    'use strict';
 					    resetToastPosition();
 					    $.toast({
-					      heading: 'Registration Failed',
+					      heading: 'Login Failed',
 					      text: data,
 					      showHideTransition: 'slide',
 					      icon: 'error',
@@ -176,9 +110,7 @@ $(function(){
 					}
 				}
 			})
-		}
-	}
-	});
+    });
 //caps lock
 $(document).ready(function(){
             $('#password').keypress(function(e) {

@@ -57,6 +57,7 @@ if(isset($_SESSION['log']))
   <!-- inject:css -->
   <link rel="stylesheet" href="../dashboard/css/vertical-layout-light/style.css">
   <!-- endinject -->
+  <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="../dashboard/images/favicon.ico" />
   <script src="../register/js/jquery-3.3.1.min.js"></script>
   <style media="screen">
@@ -85,7 +86,7 @@ if(isset($_SESSION['log']))
               <div class="brand-logos">
                 <center><img src="../dashboard/images/favicon.ico" alt="logo">
               </div>
-              <h4 class="text-center">Hello! let's get started</h4>
+              <h4 class="text-center">iDonate Login</h4>
               <h6 class="font-weight-light text-center">Sign in to continue.</h6>
               <?php if(isset($_GET['rs'])){ ?>
               <h6 class="font-weight-light text-center" style="color:green">Registration Successful!Check your email for activation link.</h6>
@@ -93,27 +94,38 @@ if(isset($_SESSION['log']))
                 window.history.pushState("", "", './');
               </script>
             <?php } ?>
+            <?php if(isset($_GET['lo'])){ ?>
+            <h6 class="font-weight-light text-center" style="color:green">You are now logged out</h6>
+            <script type="text/javascript">
+              window.history.pushState("", "", './');
+            </script>
+          <?php } ?>
+          <?php if(isset($_GET['se'])){ ?>
+          <h6 class="font-weight-light text-center" style="color:tomato">Session Expired.</h6>
+          <script type="text/javascript">
+            window.history.pushState("", "", './');
+          </script>
+        <?php } ?>
             </center>
-              <form class="pt-3">
-                <div class="form-group">
+              <form class="pt-3" id="wizardb">
+              <div class="form-row">
+                <div class="form-holder">
                   <i class="zmdi zmdi-email"></i>
-                  <input type="email" class="form-control form-control-md" id="email" name="email" placeholder="Username/Email">
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Username/Email">
                 </div>
-                <div class="form-group password">
+              </div>
+
+              <div class="form-row">
+                <div class="form-holder password">
                   <i class="zmdi zmdi-eye"></i>
-                  <input type="password" class="form-control form-control-md" id="password" name="password" placeholder="Password">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 </div>
+              </div>
                 <div class="mt-4">
-                  <a class="btn btn-block btn-primary btn-md font-weight-medium auth-form-btns" href="" id="login">SIGN IN</a>
+                  <button type="submit" class="btn btn-block btn-primary btn-md font-weight-medium auth-form-btns" id="login"><i id="lodr"></i>&nbspSIGN IN&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
                 </div>
-                <div class="my-2 d-flex justify-content-between align-items-center">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input">
-                      Keep me signed in
-                    </label>
-                  </div>
-                  <a href="..dashboard/auth/reset.php" class="auth-link text-black">Forgot password?</a>
+                <div class="align-items-right" style="align:right!important; margin-top:5px;">
+                  <a href="..dashboard/auth/reset.php" class="auth-link text-right text-muted">Forgot password?</a>
                 </div>
                 <div class="mb-2">
                   <div class="wells">

@@ -56,7 +56,7 @@
   };
 
 
-  //Initialise notification
+  /*Initialise notification
   var myFunction = function() {
     alert('Click function');
   };
@@ -76,5 +76,5 @@
     };
     console.log(options);
     $("#easyNotify").easyNotify(options);
-  });
+  });*/
 }(jQuery));
