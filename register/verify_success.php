@@ -16,7 +16,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../dashboard/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../dashboard/images/favicon.png" />
+  <link rel="shortcut icon" href="../dashboard/images/favicon.ico" />
 </head>
 
 <body>
