@@ -1,6 +1,7 @@
 <?php
   include '../dashboard/db/db.php';
   include '../dashboard/functions/auth.php';
+  include '../dashboard/functions/sendemail.php';
   date_default_timezone_set('Africa/Nairobi');
   if(isset($_POST['register'])){
     $userID = userID();

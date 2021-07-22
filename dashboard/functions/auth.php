@@ -124,7 +124,35 @@ function register($userID,$firstName,$lastName,$username,$gender,$address,$email
           ':userID'		=>	$userID
         )
       )){
-        echo "success";
+        $body = "";
+        $heading = "Email Verification";
+        $to = $email;
+        $code = gen_uuid();
+        $name = $firstName;
+        $link = "http://localhost/idonate/register/verifyme.php?xd=".$code."&& email=".$email."";
+        $posts=array();
+        $posts['email'] = $email;
+        $posts['code'] = $code;
+        $filename=$code.'.json';
+        $fileSavingResult = saveFile($filename, $posts);
+        if ( $fileSavingResult == 1){
+            //echo "<tr><td><br/>File was saved!<br/><br/></td></tr>";
+        } else if ($fileSavingResult == -2){
+            //echo "<tr><td><br/>An error occured during saving file!<br/><br/></td></tr>";
+        } else if ($fileSavingResult == -1){
+            //echo "<tr><td><br/>Wrong file name!<br/><br/></td></tr>";
+          }
+        ob_start();                      // start capturing output
+        include('verify_body.php');   // execute the file
+        $body = ob_get_contents();    // get the contents from the buffer
+        ob_end_clean();
+
+        if(sendMail($to,$body,$heading) == 'sent'){
+          echo "success";
+        } else {
+          echo "Registration failed at step 4";
+        }
+
       }else {
         echo "Registration failed at step 3";
       }
@@ -167,4 +195,22 @@ function gen_uuid() {
 function userID() {
   return uniqid();
 }
+//save file
+function saveFile($filename,$filecontent){
+    if (strlen($filename)>0){
+        $folderPath = 'verifier';
+        if (!file_exists($folderPath)) {
+            mkdir($folderPath);
+        }
+        $file = @fopen($folderPath . DIRECTORY_SEPARATOR . $filename,"w");
+        if ($file != false){
+            fwrite($file,json_encode($filecontent));
+            fclose($file);
+            return 1;
+        }
+        return -2;
+    }
+    return -1;
+}
+
  ?>

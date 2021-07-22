@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../dashboard/vendors/feather/feather.css">
   <link rel="stylesheet" href="../dashboard/vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="../dashboard/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../dashboard/vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../dashboard/vendors/jquery-toast-plugin/jquery.toast.min.css">
   <!-- MATERIAL DESIGN ICONIC FONT -->
   <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
 
@@ -231,5 +233,12 @@
     <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
     <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
     <script src="vendor/date-picker/js/datepicker.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <script src="../dashboard/vendors/jquery-toast-plugin/jquery.toast.min.js"></script>
+    <!-- End plugin js for this page-->
+    <!-- Custom js for this page-->
+    <script src="../dashboard/js/toastDemo.js"></script>
+    <script src="../dashboard/js/desktop-notification.js"></script>
 </body>
 </html>
