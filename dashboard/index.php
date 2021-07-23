@@ -637,6 +637,7 @@
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  <?php include 'functions/check_stats.php'; ?>
 </body>
 
 </html>

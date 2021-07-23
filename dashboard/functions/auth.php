@@ -230,8 +230,8 @@ function checkEmail($email) {
 //check last sessions
 function checkSes($userid,$connect){
   $statement = $connect->prepare("
-    SELECT TOP 1 * from tbl_instance
-    where userID = :uid ORDER BY loginTime DESC
+    SELECT * from tbl_instance
+    where userID = :uid ORDER BY loginTime DESC LIMIT 1
 	");
 	if($statement->execute(
 		array(

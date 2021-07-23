@@ -127,6 +127,22 @@ if(isset($_SESSION['log']))
   <script src="../dashboard/js/desktop-notification.js"></script>
 
   <script src="js/main.js"></script>
+  <script type="text/javascript">
+  function checkLoginStatus(){
+     $.get("/idonate/dashboard/functions/updateStat.php", function(data){
+       if(data=='1'){
+         window.top.location.href = "/idonate/dashboard/index.php";
+       } else if(data=='2'){
+
+       } else if(data=='3'){
+         window.top.location.href = "/idonate/login?se";
+       }
+        setTimeout(function(){  checkLoginStatus(); }, 3000);
+        });
+  }
+  checkLoginStatus();
+  </script>
+
 </body>
 
 </html>
