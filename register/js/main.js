@@ -89,9 +89,9 @@ $(function(){
 								name +=" ";
 								name+=document.getElementById('lastName').value;
 								document.getElementById('name1').innerHTML = name;
-								document.getElementById('email1').innerHTML =document.getElementById('email').value;
-								document.getElementById('phone1').innerHTML =document.getElementById('phone').value;
-								document.getElementById('address1').innerHTML =document.getElementById('address').value;
+								document.getElementById('email1').innerHTML = document.getElementById('email').value;
+								document.getElementById('phone1').innerHTML = document.getElementById('phone').value;
+								document.getElementById('address1').innerHTML = document.getElementById('address').value;
             }
 						form.validate().settings.ignore = ":disabled,:hidden";
 						return form.valid();
@@ -145,7 +145,55 @@ $(function(){
 				data:form_data,
 				success:function(data)
 				{
-					$('#error_result').html(data);
+					if(data=='success'){
+						$('#error_result').html(data);
+						//show toast
+						showSuccessToast1 = function() {
+					    'use strict';
+					    resetToastPosition();
+					    $.toast({
+					      heading: 'Registration Success',
+					      text: 'Check your email for an activation link. Can\'t find it? Check the spam folder<br>Redirecting to login...',
+					      showHideTransition: 'slide',
+					      icon: 'success',
+					      loaderBg: '#f96868',
+					      position: 'top-right',
+								hideAfter: 5000
+					    })
+					  };
+						showSuccessToast1();
+						//Notify
+						var options = {
+				      title: "Registration Success",
+				      options: {
+				        body: 'Check your email for an activation link. Can\'t find it? Check the spam folder',
+				        icon: '../dashboard/images/idonate_logo.png',
+				        lang: 'en-US'
+				        //onClick: myFunction
+				      }
+				    };
+				    console.log(options);
+				    $("#easyNotify").easyNotify(options);
+						setTimeout(function(){
+    					window.location.href='../login?rs';
+						},5000);
+					}else {
+						$('#error_result').html(data);
+						showDangerToast1 = function() {
+					    'use strict';
+					    resetToastPosition();
+					    $.toast({
+					      heading: 'Registration Failed',
+					      text: data,
+					      showHideTransition: 'slide',
+					      icon: 'error',
+					      loaderBg: '#f2a654',
+					      position: 'top-right',
+								hideAfter: 5000
+					    })
+					  };
+						showDangerToast1();
+					}
 				}
 			})
 		}
@@ -164,4 +212,6 @@ $(document).ready(function(){
                 }
             });
         });
+//datepicker
+
 })

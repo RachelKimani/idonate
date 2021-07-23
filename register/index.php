@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../dashboard/vendors/feather/feather.css">
   <link rel="stylesheet" href="../dashboard/vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="../dashboard/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../dashboard/vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../dashboard/vendors/jquery-toast-plugin/jquery.toast.min.css">
   <!-- MATERIAL DESIGN ICONIC FONT -->
   <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
 
@@ -23,6 +25,7 @@
   <link rel="shortcut icon" href="../dashboard/images/favicon.ico" />
   <link rel="stylesheet" href="vendor/date-picker/css/datepicker.min.css">
 
+  <script src="vendor/date-picker/js/datepicker.js"></script>
   <!-- STYLE CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -54,16 +57,31 @@
                     <div class="form-row">
                         <div class="form-holder">
                             <i class="zmdi zmdi-email"></i>
-                            <input type="text" class="form-control" placeholder="Email Address" id="email" name="email" required>
+                            <input type="text" class="form-control" placeholder="Email Address" id="email" name="email" autocomplete="new-password" required>
                         </div>
                         <div class="form-holder">
                             <i class="zmdi zmdi-smartphone-android"></i>
-                            <input type="phone" class="form-control" placeholder="Phone Number" id="phone" name="phone" required>
+                            <input type="phone" class="form-control" placeholder="Phone Number" id="phone" name="phone" autocomplete="new-password" required>
                         </div>
                     </div>
                     <div class="form-row">
                       <div class="form-holder">
-                          <input type="date" class="form-control"  id="datepiscker" placeholder="DOB" name="dob" required>
+                          <input type="text" class="form-control"  id="dob" placeholder="DOB" name="dob" autocomplete="new-password" required>
+                          <script>
+                          var dates = new Date();
+                          dates.setFullYear(dates.getFullYear() - 16)
+                          $("#dob").datepicker(
+                              {
+                                //minDate: new Date(1900,1-1,1),
+                                maxDate: dates,
+                                dateFormat: 'dd/mm/yyyy',
+                                //endDate: new Date(),
+                                changeMonth: true,
+                                changeYear: true,
+                                yearRange: '-110:-16'
+                              }
+                            );
+                          </script>
                       </div>
                       <div class="form-holder">
 
@@ -77,7 +95,7 @@
                     <div class="form-row">
                         <div class="form-holder">
                             <i class="zmdi zmdi-map"></i>
-                            <input type="text" class="form-control" placeholder="Address" id="address" name="address" autocomplete="new-password">
+                            <input autocomplete="new-password" type="text" class="form-control" placeholder="Address" id="address" name="address">
                         </div>
                         <div class="form-group">
 
@@ -102,17 +120,17 @@
                   <div class="form-row ">
                       <div class="form-holder w-100">
                           <i class="zmdi zmdi-account-box-o"></i>
-                          <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                          <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="new-password" required>
                       </div>
                   </div>
                     <div class="form-row">
                       <div class="form-holder password">
                           <i class="zmdi zmdi-eye"></i>
-                          <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                          <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" placeholder="Enter Password">
                       </div>
                         <div class="form-holder password">
                             <i class="zmdi zmdi-eye"></i>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" autocomplete="new-password" placeholder="Confirm Password">
                             <input type="text" name="register" hidden>
                         </div>
                         <div id="divMayus" style="visibility:hidden">Caps Lock is on.</div>
@@ -230,6 +248,12 @@
     <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
     <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
-    <script src="vendor/date-picker/js/datepicker.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <script src="../dashboard/vendors/jquery-toast-plugin/jquery.toast.min.js"></script>
+    <!-- End plugin js for this page-->
+    <!-- Custom js for this page-->
+    <script src="../dashboard/js/toastDemo.js"></script>
+    <script src="../dashboard/js/desktop-notification.js"></script>
 </body>
 </html>
