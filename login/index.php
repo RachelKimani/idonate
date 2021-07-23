@@ -117,11 +117,14 @@ if(isset($_SESSION['log']))
 
               <div class="form-row">
                 <div class="form-holder password">
-                  <i class="zmdi zmdi-eye"></i>
+                  <i class="zmdi zmdi-eye toggle-password" id="eyepwd"></i>
                   <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                   <input type="text" name="login" value="" hidden>
                 </div>
+
               </div>
+              <p id="divMayus" style="visibility:hidden;margin-top:5px;color:brown;">CapsLock is on!</p>
+
                 <div class="mt-4">
                   <button type="submit" class="btn btn-block btn-primary btn-md font-weight-medium auth-form-btns" id="login"><i id="lodr"></i>&nbspSIGN IN&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
                 </div>
@@ -155,8 +158,9 @@ if(isset($_SESSION['log']))
   <!-- Custom js for this page-->
   <script src="../dashboard/js/toastDemo.js"></script>
   <script src="../dashboard/js/desktop-notification.js"></script>
-
+  <script src="js/jquery.capslockstate.js"></script>
   <script src="js/main.js"></script>
+
   <!-- endinject -->
 </body>
 

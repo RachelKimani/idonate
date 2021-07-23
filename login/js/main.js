@@ -60,14 +60,6 @@ $(function(){
 			}
 	});
   $( "#login" ).click(function() {
-    $('#email').rules('add', {
-
-      remote: {
-                  url: "check_email.php",
-                  type: "post"
-               }
-    }
-  );
     form.validate().settings.ignore = ":disabled,:hidden";
     return form.valid();
     return true;
@@ -78,6 +70,18 @@ $( "#loginx" ).click(function() {
 	form2.validate().settings.ignore = ":disabled,:hidden";
 	return form2.valid();
 	return true;
+});
+
+// Click to see password
+$("body").on('click', '.toggle-password', function() {
+  $(this).toggleClass("zmdi-eye zmdi-eye-off");
+  var input = $("#password");
+  if (input.attr("type") === "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+
 });
     //process form
     $( "#wizardb" ).submit(function( event ) {
@@ -104,6 +108,9 @@ $( "#loginx" ).click(function() {
 					} else if (data == 'success1') {
 						title = 'Login Failed';
 						msg = 'Internal server error. Please reload and try again.';
+					} else if (data == 'notfound') {
+						title = 'Login Failed';
+						msg = 'User does not exist';
 					}
 					if(data=='success'){
 						$('#lodr').html('');
@@ -118,7 +125,7 @@ $( "#loginx" ).click(function() {
 					      icon: 'success',
 					      loaderBg: '#f96868',
 					      position: 'top-right',
-								hideAfter: 3000
+								hideAfter: 1000
 					    })
 					  };
 						showSuccessToast1();
@@ -149,7 +156,7 @@ $( "#loginx" ).click(function() {
 					      icon: 'error',
 					      //loaderBg: '#f2a654',
 					      position: 'top-right',
-								hideAfter: 5000
+								hideAfter: 10000
 					    })
 					  };
 						showDangerToast1();
@@ -185,6 +192,9 @@ $( "#loginx" ).click(function() {
 					} else if (data == 'success1') {
 						title = 'Login Failed';
 						msg = 'Internal server error. Please reload and try again.';
+					} else if (data == 'notfound') {
+						title = 'Login Failed';
+						msg = 'User does not exist';
 					}
 					if(data=='success'){
 						$('#lodrc').html('');
@@ -199,7 +209,7 @@ $( "#loginx" ).click(function() {
 					      icon: 'success',
 					      loaderBg: '#f96868',
 					      position: 'top-right',
-								hideAfter: 3000
+								hideAfter: 1000
 					    })
 					  };
 						showSuccessToast1();
@@ -230,7 +240,7 @@ $( "#loginx" ).click(function() {
 					      icon: 'error',
 					      //loaderBg: '#f2a654',
 					      position: 'top-right',
-								hideAfter: 5000
+								hideAfter: 10000
 					    })
 					  };
 						showDangerToast1();
@@ -283,7 +293,7 @@ if(urls.includes('?')){
 					$('#lodr').html('');
 					//show toast
 					showSuccessToast1 = function() {
-						'use strict';
+ 						'use strict';
 						resetToastPosition();
 						$.toast({
 							heading: title,
@@ -292,7 +302,7 @@ if(urls.includes('?')){
 							icon: 'success',
 							loaderBg: '#f96868',
 							position: 'top-right',
-							hideAfter: 3000
+							hideAfter: 1000
 						})
 					};
 					showSuccessToast1();
@@ -323,7 +333,7 @@ if(urls.includes('?')){
 							icon: 'error',
 							//loaderBg: '#f2a654',
 							position: 'top-right',
-							hideAfter: 5000
+							hideAfter: 10000
 						})
 					};
 					showDangerToast1();
@@ -336,15 +346,37 @@ if(urls.includes('?')){
 }
 //caps lock
 $(document).ready(function(){
-            $('#password').keypress(function(e) {
-                var s = String.fromCharCode( e.which );
+						$('#email').keypress(function(e) {
+							$('#email').rules('add', {
 
-                if((s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey) ||
-                   (s.toUpperCase() !== s && s.toLowerCase() === s && e.shiftKey)){
-                    if($('#capsalert').length < 1) $(this).after('<b id="capsalert">CapsLock is on!</b>');
-                } else {
-                    if($('#capsalert').length > 0 ) $('#capsalert').remove();
-                }
-            });
+								remote: {
+														url: "check_email.php",
+														type: "post"
+												 }
+							}
+						);
+						form2.validate().settings.ignore = ":disabled,:hidden";
+						return form2.valid();
+						return true;
+						});
+
+
+				$(window).capslockstate();
+        $(window).bind("capsOn", function(event) {
+            if ($("#password:focus").length > 0) {
+                document.getElementById('divMayus').style.visibility = 'visible';
+            }
+        });
+        $(window).bind("capsOff capsUnknown", function(event) {
+            document.getElementById('divMayus').style.visibility = 'hidden';
+        });
+        $("#txtPassword").bind("focusout", function(event) {
+            document.getElementById('divMayus').style.visibility = 'hidden';
+        });
+        $("#txtPassword").bind("focusin", function(event) {
+            if ($(window).capslockstate("state") === true) {
+                document.getElementById('divMayus').style.visibility = 'visible';
+            }
+        });
         });
 })

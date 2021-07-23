@@ -5,20 +5,18 @@
   body{
     line-height: 0.5 !important;
   }
+  label{
+    display: block;
+    margin:0rem !important;
+  }
       label.error {
         color: brown;
          }
-        label.error:after {
-          font-family: 'themify';
-          position: absolute;
-          content: '\e717';
-          right: 20px;
-          top: 40px;
-          font-size: 13px;
-          color: #ff1212; }
 
       input.error {
-        border: 1px solid #ff1212; }
+        border: 1px solid #ff1212;
+        margin-top: 0.5rem !important;
+      }
         select.error {
           border: 1px solid #ff1212!important; }
 .form-row {
@@ -48,7 +46,7 @@
     transform: translateY(-50%);
     right: 20px;
     font-size: 16px; }
-    .form-holder i.zmdi-eye {
+    .form-holder i.zmdi-eye,.form-holder i.zmdi-eye-off,.form-holder i.fa-eye,.form-holder i.fa-eye-slash {
       cursor: pointer; }
 
 
