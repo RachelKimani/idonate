@@ -35,27 +35,30 @@
     }
     @media only screen and (min-width: 992px) {
       nav#navbar.navbar.acolor a.acl,nav#navbar.navbar.acolor .bi.mobile-nav-toggle.bi-list{
-        color:white;
+        color:white !important;
       }
     }
     nav#navbar.navbar.acolor i.bi.bi-list.mobile-nav-toggle{
-      color:white;
+      color:white !important;
     }
 
 
     nav#navbar.navbar.acolor a.acl.active{
-      font-weight: bolder;
+      font-weight: bolder !important;
     }
     nav#navbar.navbar.acolor a.acl:hover{
-      color:red;
+      color:red !important;
     }
     a#acl.loga{
-      color:white;
-      font-weight: bold;
+      color:white !important;
+      font-weight: bold !important;
     }
   </style>
 </head>
 <body>
+  <div id="preloader">
+    <div id="status">&nbsp;</div>
+  </div>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center navbars">
     <div class="container d-flex align-items-center">

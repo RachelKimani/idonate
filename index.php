@@ -473,11 +473,20 @@
 
   </main><!-- End #main -->
   <script>
+  $('html, body').css({
+    'overflow': 'hidden',
+    'height': '100%'
+  });
   $(window).on('load', function() {
     $('.navbars').addClass('alt-color');
     $('.navbar').addClass('acolor');
     $(".loga").attr("id","acl");
     $('.dropdown').removeClass('acolor');
+
+    $("#status").delay(1000).fadeOut();
+    // will fade out the whole DIV that covers the website.
+    $("#preloader").delay(1000).fadeOut("slow");
+    $('html, body').removeAttr('style');
     //$('.navbars').css('background','transparent');
   });
   $(window).scroll(function () {
