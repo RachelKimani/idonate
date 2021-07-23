@@ -159,8 +159,40 @@ if(isset($_SESSION['log']))
   <script src="../dashboard/js/toastDemo.js"></script>
   <script src="../dashboard/js/desktop-notification.js"></script>
   <script src="js/jquery.capslockstate.js"></script>
+  <script src="  ../dashboard/vendors/sweetalert/sweetalert.min.js"></script>
   <script src="js/main.js"></script>
-
+  <script type="text/javascript">
+  function checkLoginStatus(){
+     $.get("/idonate/dashboard/functions/updateStat.php", function(data){
+       if(data=='1'){
+         swal({
+           title: "Session Started",
+           text: "iDonate is already logged in in another window",
+           icon: "info",
+           buttons: ["Use here!","Close window"],
+           confirmButtonClass: "btn-danger",
+           cancelButtonClass: "btn-success",
+           closeModal: false,
+           closeOnClickOutside: false
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            window.open('https://www.google.com/', '_self');
+            window.top.close();
+            //window.top.location.href = "/idonate/login/close.php";
+          } else {
+            window.top.location.href = "/idonate/dashboard/index.php";
+          }
+        });
+       } else if(data=='2'){
+         window.top.location.href = "/idonate/login/lock.php";
+       } else if(data=='3'){
+       }
+        setTimeout(function(){  checkLoginStatus(); }, 3000);
+        });
+  }
+  checkLoginStatus();
+  </script>
   <!-- endinject -->
 </body>
 
