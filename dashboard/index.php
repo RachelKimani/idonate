@@ -1,3 +1,4 @@
+<?php include 'functions/check_session.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,7 +103,21 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="../assets/img/user.png" alt="profile"/>&nbspUsername
+              <img src="<?php if(isset($_SESSION['img'])){
+                if($_SESSION['img']!=''){
+                  echo $_SESSION['img'];
+                }else {
+                  echo "../assets/img/user.png";
+                }
+              }else {
+                echo "../assets/img/user.png";
+              }
+               ?>" alt="profile"/>&nbsp<?php if(isset($_SESSION['fullName'])){
+                echo $_SESSION['fullName'];
+              }else {
+                echo "Guest";
+              }
+               ?>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -113,11 +128,11 @@
                 <i class="ti-help text-primary"></i>
                 Help
               </a>
-              <a class="dropdown-item" href="pages/auth/lock-screen.php">
+              <a class="dropdown-item" href="../login/lock.php">
                 <i class="ti-lock text-primary"></i>
                 Lock
               </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="../logout/">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
@@ -368,8 +383,19 @@
             <div class="col-md-12 grid-margin">
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Welcome Username</h3>
-                  <h6 class="font-weight-normal mb-0">Last login 21st Jul 2021 (Nairobi, 21.06 PM). You have <span class="text-primary">3 unread messages!</span></h6>
+                  <h3 class="font-weight-bold">Welcome <?php if(isset($_SESSION['firstName'])){
+                    echo $_SESSION['firstName'];
+                  }else {
+                    echo "Guest";
+                  }
+                   ?></h3>
+                  <h6 class="font-weight-normal mb-0">
+                    <?php if(isset($_SESSION['instance'])){
+                      echo $_SESSION['instance'];
+                    }else {
+                      echo "";
+                    }?>
+                  You have <span class="text-primary">3 unread messages!</span></h6>
                 </div>
                 <div class="col-12 col-xl-4">
                  <div class="justify-content-end d-flex">
@@ -611,6 +637,7 @@
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  <?php include 'functions/check_stats.php'; ?>
 </body>
 
 </html>

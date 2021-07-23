@@ -33,3 +33,26 @@
 .main-timeline12 .timeline:nth-child(2n) .border{margin:10px 0 0}
 .main-timeline12 .timeline-content{text-align:center}
 }
+
+#preloader {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #fefefe;
+z-index: 9943;
+height: 100%;
+}
+
+#status {
+width: 200px;
+height: 200px;
+position: absolute;
+left: 50%;
+top: 50%;
+background-image: url(../../dashboard/images/loaders/301.gif);
+background-repeat: no-repeat;
+background-position: center;
+margin: -100px 0 0 -100px;
+}
