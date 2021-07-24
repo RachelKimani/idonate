@@ -129,7 +129,7 @@ if(isset($_SESSION['log']))
                   <button type="submit" class="btn btn-block btn-primary btn-md font-weight-medium auth-form-btns" id="login"><i id="lodr"></i>&nbspSIGN IN&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
                 </div>
                 <div class="align-items-right" style="align:right!important; margin-top:5px;">
-                  <a href="..dashboard/auth/reset.php" class="auth-link text-right text-muted">Forgot password?</a>
+                  <a href="../dashboard/pages/auth/reset.php" class="auth-link text-right text-muted">Forgot password?</a>
                 </div>
                 <div class="mb-2">
                   <div class="wells">
