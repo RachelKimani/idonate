@@ -29,7 +29,7 @@
               <div class="brand-logo">
                 <center><img src="../../images/idonate_logo.png" alt="logo"></center>
               </div>
-              <h4 class="text-center">Reset Password</h4>
+              <h4 class="text-center">Forgot Password</h4>
               <h6 class="font-weight-light text-center">Enter Your Email</h6>
               <form class="pt-3">
                 <div class="form-group">
@@ -38,7 +38,7 @@
                 <div class="mt-3">
                   <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">NEXT</a>
                 </div>
-                 
+
                 <div class="text-center mt-4 font-weight-light">
                   Don't have an account? <a href="register.html" class="text-primary">Create</a>
                 </div>

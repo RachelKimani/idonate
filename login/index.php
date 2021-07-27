@@ -111,7 +111,7 @@ if(isset($_SESSION['log']))
               <div class="form-row">
                 <div class="form-holder">
                   <i class="zmdi zmdi-email"></i>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Username/Email">
+                  <input type="text" class="form-control" id="email2" name="email" placeholder="Username/Email">
                 </div>
               </div>
 
@@ -129,7 +129,7 @@ if(isset($_SESSION['log']))
                   <button type="submit" class="btn btn-block btn-primary btn-md font-weight-medium auth-form-btns" id="login"><i id="lodr"></i>&nbspSIGN IN&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
                 </div>
                 <div class="align-items-right" style="align:right!important; margin-top:5px;">
-                  <a href="../dashboard/pages/auth/reset.php" class="auth-link text-right text-muted">Forgot password?</a>
+                  <a href="./reset.php" class="auth-link text-right text-muted">Forgot password?</a>
                 </div>
                 <div class="mb-2">
                   <div class="wells">
