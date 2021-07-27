@@ -104,7 +104,7 @@ function register($userID,$firstName,$lastName,$username,$gender,$address,$email
       ':address'		=>	$address,
       ':email'		=>	$email,
       ':phone'		=>	$phone,
-      ':dob'		=>	$dob
+      ':dob'		=>	 date_format(date_create($dob),"Y-m-d")
     )
   )){
     $query1 = "
@@ -169,9 +169,30 @@ function register($userID,$firstName,$lastName,$username,$gender,$address,$email
     echo "Registration failed at step 1";print_r($statement->errorInfo());
   }
 }
-function resetPassword()
+function resetPassword($email,$connect)
 {
 
+    $body = "";
+    $heading = "Password Reset";
+    $to = $email;
+    $code = gen_uuid();
+    $link = "http://localhost/idonate/login/pwreset.php?xd=".$code."&& email=".$email."";
+    $posts=array();
+    $posts['email'] = $email;
+    $posts['code'] = $code;
+    $filename=$code.'.json';
+    $fileSavingResult = saveFile($filename, $posts);
+    ob_start();                      // start capturing output
+    include('reset_body.php');   // execute the file
+    $body = ob_get_contents();    // get the contents from the buffer
+    ob_end_clean();
+
+    if(sendMail($to,$body,$heading) == 'sent'){
+      echo "success";
+    } else {
+      echo "Unable to send email";
+      echo sendMail($to,$body,$heading);
+    }
 }
 function updateRecord()
 {
@@ -255,6 +276,34 @@ function checkSes($userid,$connect){
     }
   }
 }
-
+function fetchUser($id,$connect){
+  $query = "
+  SELECT
+  u.email,u.firstName,u.lastName,u.username,u.gender,u.address,,u.dob,u.phone
+  r.userType,r.userRole,
+  a.privateKey,a.password,a.status,a.dateCreated
+  FROM tbl_users u
+  LEFT JOIN tbl_roles r on u.userID = r.userID
+  LEFT JOIN tbl_auth a   on u.userID   = a.userID
+  where u.email = :email or u.username = :email";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	foreach($result as $row)
+	{
+    $output['email'] = $row['email'];
+    $output['firstName'] = $row['firstName'];
+    $output['lastName'] = $row['lastName'];
+    $output['username'] = $row['username'];
+    $output['gender'] = $row['gender'];
+    $output['address'] = $row['address'];
+    $output['dob'] = $row['dob'];
+    $output['phone'] = $row['phone'];
+    $output['privateKey'] = $row['privateKey'];
+    $output['password'] = $row['password'];
+    $output['dateCreated'] = $row['dateCreated'];
+	}
+	return $output;
+}
 
  ?>

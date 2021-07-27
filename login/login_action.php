@@ -1,6 +1,7 @@
 <?php
   include '../dashboard/db/db.php';
   include '../dashboard/functions/auth.php';
+  include '../dashboard/functions/sendemail.php';
   date_default_timezone_set('Africa/Nairobi');
   if(isset($_POST['login'])){
     $email = trim($_POST['email']);
@@ -13,5 +14,8 @@
     $img = $_GET['g_img'];
     $password = md5('g_l');
     login($email,$password,$connect,$img);
+  }
+  if(isset($_POST['reset'])){
+    resetPassword(trim($_POST['email']),$connect);
   }
  ?>

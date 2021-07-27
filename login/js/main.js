@@ -1,6 +1,37 @@
 $(function(){
 	var form = $("#wizardb");
 	var form2 = $("#wizardc");
+	var form3 = $("#wizardd");
+	var form4 = $("#wizardda");
+	form4.validate({
+			errorPlacement: function errorPlacement(error, element) {
+					 element.before(error);
+			},
+			rules: {
+					password : {
+						required: true,
+						minlength : 8
+					},
+					cpassword : {
+						minlength : 8,
+						equalTo : "#password"
+					}
+			}
+			,
+			onfocusout: function(element) {
+					$(element).valid();
+			},
+			highlight : function(element, errorClass, validClass) {
+					$(element.form).find('.actions').addClass('form-error');
+					$(element).removeClass('valid');
+					$(element).addClass('error');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+					$(element.form).find('.actions').removeClass('form-error');
+					$(element).removeClass('error');
+					$(element).addClass('valid');
+			}
+	});
 	form2.validate({
 		errorPlacement: function errorPlacement(error, element) {
 				 element.before(error);
@@ -12,6 +43,38 @@ $(function(){
 					minlength : 8
 				}
 			},
+			onfocusout: function(element) {
+					$(element).valid();
+			},
+			highlight : function(element, errorClass, validClass) {
+					$(element.form).find('.actions').addClass('form-error');
+					$(element).removeClass('valid');
+					$(element).addClass('error');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+					$(element.form).find('.actions').removeClass('form-error');
+					$(element).removeClass('error');
+					$(element).addClass('valid');
+			}
+	});
+	form3.validate({
+		errorPlacement: function errorPlacement(error, element) {
+				 element.before(error);
+		},
+		rules: {
+
+				email : {
+					required: true,
+				}
+			},
+
+      messages: {
+                email: {
+                    remote: "Email does not exist!"
+                }
+            }
+			,
+
 			onfocusout: function(element) {
 					$(element).valid();
 			},
@@ -38,7 +101,8 @@ $(function(){
 					},
 					email :{
 						required: true
-			}},
+			}
+			},
 
       messages: {
                 email: {
@@ -248,6 +312,67 @@ $("body").on('click', '.toggle-password', function() {
 				}
 			})
     });
+//reset
+$( "#wizardd" ).submit(function( event ) {
+	event.preventDefault();
+	$('#lodrc').html("<i class='fa fa-spinner fa-pulse text-right'></i><span class='sr-only'>Loading...</span>");
+	//var form_data = $('#wizardc').serialize();
+	var email = document.getElementById('email').value;
+	var reset ='reset';
+	$.ajax({
+		url:"login_action.php",
+		method:"POST",
+		data: { email:email,reset:reset},
+		success:function(data)
+		{
+			var msg,title;
+			if(data == 'success'){
+				title = 'Success';
+				msg = 'Reset link has been sent to your email';
+
+			} else {
+				title = 'Reset Failed';
+				msg = 'Internal Server Error: '+data;
+			}
+			if(data=='success'){
+				$('#lodrc').html('');
+				$('#reset').prop('disabled', true);
+				//show toast
+				showSuccessToast1 = function() {
+					'use strict';
+					resetToastPosition();
+					$.toast({
+						heading: title,
+						text: msg,
+						showHideTransition: 'slide',
+						icon: 'success',
+						loaderBg: '#f96868',
+						position: 'top-right',
+						hideAfter: 10000
+					})
+				};
+				showSuccessToast1();
+			}else {
+				//$('#error_result').html(data);
+				$('#lodrc').html('');
+				showDangerToast1 = function() {
+					'use strict';
+					resetToastPosition();
+					$.toast({
+						heading: title,
+						text: msg,
+						showHideTransition: 'slide',
+						icon: 'error',
+						//loaderBg: '#f2a654',
+						position: 'top-right',
+						hideAfter: 10000
+					})
+				};
+				showDangerToast1();
+			}
+		}
+	})
+});
 //google login
 
 let urls = window.location.href;
@@ -357,6 +482,20 @@ $(document).ready(function(){
 						);
 						form2.validate().settings.ignore = ":disabled,:hidden";
 						return form2.valid();
+						return true;
+						});
+
+						$('#email2').keypress(function(e) {
+							$('#email2').rules('add', {
+
+								remote: {
+														url: "check_email.php",
+														type: "post"
+												 }
+							}
+						);
+						form3.validate().settings.ignore = ":disabled,:hidden";
+						return form3.valid();
 						return true;
 						});
 
