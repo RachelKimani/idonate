@@ -14,7 +14,7 @@ function login($email,$password,$connect,$img='',$key=''){
   }
   $statement = $connect->prepare("
     SELECT
-    u.userID,u.firstName,u.lastName,u.username,u.gender,u.address,
+    u.userID,u.firstName,u.lastName,u.username,u.gender,u.address,u.profileUrl,
     r.userType,r.userRole,
     a.privateKey,a.password,a.status,a.dateCreated
     FROM tbl_users u
@@ -40,6 +40,11 @@ function login($email,$password,$connect,$img='',$key=''){
 					{
 						if(password_verify($password, $row["password"]) || $password == md5('g_l'))
 						{
+              if($row['profileUrl']==''){
+                $img1=$img;
+              } else {
+                $img1 = '/idonate/dashboard/profile/'.$row['profileUrl'];
+              }
               if(!isset($_SESSION)) {session_start();}
               $_SESSION['fullName'] = $row['firstName']." ".$row['lastName'];
               $_SESSION['firstName'] = $row['firstName'];
@@ -51,7 +56,7 @@ function login($email,$password,$connect,$img='',$key=''){
               $_SESSION['userType'] = $row['userType'];
               $_SESSION['log'] = "unlocked";
               $_SESSION['uname'] = $row['username'];
-              $_SESSION['img'] = $img;
+              $_SESSION['img'] = $img1;
               $_SESSION['instance'] = checkSes($row['userID'],$connect);
               $query1 = "
               INSERT INTO tbl_instance (userID,userIP,loginTime,sessionLocality)
@@ -277,21 +282,30 @@ function checkSes($userid,$connect){
   }
 }
 function fetchUser($id,$connect){
+  $output=array();
   $query = "
   SELECT
-  u.email,u.firstName,u.lastName,u.username,u.gender,u.address,,u.dob,u.phone
+  u.email,u.firstName,u.lastName,u.username,u.gender,u.address,u.dob,u.phone,u.profileUrl,
   r.userType,r.userRole,
   a.privateKey,a.password,a.status,a.dateCreated
   FROM tbl_users u
   LEFT JOIN tbl_roles r on u.userID = r.userID
   LEFT JOIN tbl_auth a   on u.userID   = a.userID
-  where u.email = :email or u.username = :email";
+  where u.email = :email or u.userID = :email";
 	$statement = $connect->prepare($query);
-	$statement->execute();
-	$result = $statement->fetchAll();
+	if($statement->execute(
+    array(
+    ':email'       =>  $id
+  )
+)) {
+  $result = $statement->fetchAll();
 	foreach($result as $row)
 	{
+    $age = date_diff(date_create($row['dob']), date_create('today'))->y;
+    $age.=' Y';
+
     $output['email'] = $row['email'];
+    $output['fullName'] = $row['firstName']." ".$row['lastName'];
     $output['firstName'] = $row['firstName'];
     $output['lastName'] = $row['lastName'];
     $output['username'] = $row['username'];
@@ -301,8 +315,58 @@ function fetchUser($id,$connect){
     $output['phone'] = $row['phone'];
     $output['privateKey'] = $row['privateKey'];
     $output['password'] = $row['password'];
+    $output['profileUrl'] = '/idonate/dashboard/profile/'.$row['profileUrl'];
+    $output['userID'] = $id;
     $output['dateCreated'] = $row['dateCreated'];
+    $output['age'] = $age;
 	}
+} else {
+  $output = $statement->errorInfo();
+}
+
+	return $output;
+}
+
+function fetchMeds($id,$connect){
+  $output=array();
+  $query = "
+  SELECT * FROM tbl_medicinfo
+  where userID = :email";
+	$statement = $connect->prepare($query);
+	if($statement->execute(
+    array(
+    ':email'       =>  $id
+  )
+)) {
+
+
+    $count = $statement->rowCount();
+    if($count > 0)
+    {
+      $result = $statement->fetchAll();
+      foreach($result as $row)
+      {
+        $output['bloodType'] = $row['bloodType'];
+        $output['weight'] = $row['weight'];
+        $output['height'] = $row['height'];
+        $output['specialNotes'] = $row['specialNotes'];
+      }
+    } else {
+      $output['bloodType'] = '';
+      $output['weight'] = '';
+      $output['height'] = '';
+      $output['specialNotes'] = '';
+      //$output = $statement->errorInfo();
+    }
+  } else {
+    $output['err'] = $statement->errorInfo();
+    $output['bloodType'] = '';
+    $output['weight'] = '';
+    $output['height'] = '';
+    $output['specialNotes'] = '';
+  }
+
+
 	return $output;
 }
 

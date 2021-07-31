@@ -8705,11 +8705,14 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-color: #F5F7FF;
+  background-color: #1f1e23;
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
+}
+.list-group-item {
+    background-color: #1f1e23 !important;
 }
 
 body {
@@ -8720,7 +8723,7 @@ body {
   line-height: 1.5;
   color: #fff;
   text-align: left;
-  background-color: #F5F7FF;
+  background-color: #1f1e23;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -10172,6 +10175,11 @@ pre code {
   color: #fff;
 }
 
+
+input#navbar-search-input, .todo-list-input{
+background-color: inherit !important;
+}
+
 .table th, .jsgrid .jsgrid-table th,
 .table td,
 .jsgrid .jsgrid-table td {
@@ -10522,11 +10530,14 @@ pre code {
   font-weight: 400;
   line-height: 1;
   color: #e9e6e6;
-  background-color: #2b2e4c;
+  background-color: #2b2e4c !important;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 2px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.list-group-item-action {
+    color: #fbfbfb !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

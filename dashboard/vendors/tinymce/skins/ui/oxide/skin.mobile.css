@@ -180,7 +180,7 @@
   height: 2.1em;
   width: 2.1em;
   background-color: white;
-  color: #207ab7;
+  color: #d9232d;
 }
 .tinymce-mobile-outer-container .tinymce-mobile-disabled-mask .tinymce-mobile-content-container .tinymce-mobile-content-tap-section .tinymce-mobile-mask-tap-icon::before {
   content: "\e900";
@@ -269,7 +269,7 @@
 }
 .tinymce-mobile-toolstrip .tinymce-mobile-toolbar:not(.tinymce-mobile-context-toolbar) .tinymce-mobile-toolbar-group:first-of-type,
 .tinymce-mobile-toolstrip .tinymce-mobile-toolbar:not(.tinymce-mobile-context-toolbar) .tinymce-mobile-toolbar-group:last-of-type {
-  background: #207ab7;
+  background: #d9232d;
   color: #eceff1;
 }
 .tinymce-mobile-toolstrip .tinymce-mobile-toolbar.tinymce-mobile-context-toolbar {
@@ -631,7 +631,7 @@
 }
 .tinymce-mobile-editor-socket .tinymce-mobile-mask-edit-icon {
   /* Note, on the iPod touch in landscape, this isn't visible when the navbar appears */
-  background-color: #207ab7;
+  background-color: #d9232d;
   border-radius: 50%;
   bottom: 1em;
   color: white;
