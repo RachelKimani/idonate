@@ -444,13 +444,13 @@
                     <p>I hereby consent to the following</p><br><br>
                     <div class="const">
                         <ul id='cli'>
-                          <li><img width="30px" height="30px" src="../images/clipboard.png" >&nbspI declare that I have answered all the questions truthfully and accurately.
-                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.png" >&nbspI understand that my blood will be tested for HIV, Hepatitis B & C, and Syphilis and the results of my tests may be obtained from my donations tab or the nearest center from the donation location.
-                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.png" >&nbspI understand that should any of the screening tests give a reactive result, I will be contacted by use any communication medium(s) to send me <b>important information</b>. Such medium(s) shall include but not limited to e-mail, post office, mobile telephone and/or fixed telephone, and offered counselling to make an informed decision about further confirmatory testing and management.
-                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.png" >&nbspI hereby give consent to KNBTS to use the contact details provided in this form to communicate to me as the
+                          <li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI declare that I have answered all the questions truthfully and accurately.
+                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI understand that my blood will be tested for HIV, Hepatitis B & C, and Syphilis and the results of my tests may be obtained from my donations tab or the nearest center from the donation location.
+                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI understand that should any of the screening tests give a reactive result, I will be contacted by use any communication medium(s) to send me <b>important information</b>. Such medium(s) shall include but not limited to e-mail, post office, mobile telephone and/or fixed telephone, and offered counselling to make an informed decision about further confirmatory testing and management.
+                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI hereby give consent to KNBTS to use the contact details provided in this form to communicate to me as the
                           need may be.
-                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.png" >&nbspI understand the blood may be used for scientific research, main objective being to improve the safety of the blood supply to patients.
-                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.png" >&nbspI consent to give blood; I understand that it may be used for transfusion for the benefit of others.</li>
+                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI understand the blood may be used for scientific research, main objective being to improve the safety of the blood supply to patients.
+                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI consent to give blood; I understand that it may be used for transfusion for the benefit of others.</li>
                         </ul><br><br>
                         <div class="form-row">
                           <div class="form-holders">
