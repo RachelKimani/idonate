@@ -189,6 +189,45 @@ ALTER TABLE `tbl_users`
 --
 ALTER TABLE `tbl_auth`
   MODIFY `UUID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+  CREATE TABLE `tbl_centers` (
+  `centerID` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `city` text NOT NULL,
+  `country` text NOT NULL,
+  `cordinates` text NOT NULL,
+  `type` enum('hospital','regional','satellite','camp') NOT NULL,
+  `status` text NOT NULL DEFAULT 'active',
+  `contact` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_centers`
+--
+
+INSERT INTO `tbl_centers` (`centerID`, `name`, `city`, `country`, `cordinates`, `type`, `status`, `contact`) VALUES
+(1, 'Karen Hospital', 'Nairobi', 'Kenya', '-3.27,38', 'hospital', 'active', '097837344'),
+(2, 'Karen Hospital', 'Nairobi', 'Kenya', '-3.27,38', 'hospital', 'activec', '097837344');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_centers`
+--
+ALTER TABLE `tbl_centers`
+  ADD PRIMARY KEY (`centerID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_centers`
+--
+ALTER TABLE `tbl_centers`
+  MODIFY `centerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
  
 --
 -- AUTO_INCREMENT for table `tbl_instance`
