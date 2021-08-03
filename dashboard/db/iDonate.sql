@@ -79,6 +79,9 @@ CREATE TABLE `tbl_medicinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
  
 -- --------------------------------------------------------
+ --Dumping data for table `tbl_medicinfo
+ INSERT INTO `tbl_medicinfo` (`userID`, `bloodType`, `weight`, `height`, `gender`, `specialNotes`, `status`) VALUES
+('60f988b449ad2', 'AB', '50.3', '10.2', 'Has Low Blood Pressure', 'good');
  
 --
 -- Table structure for table `tbl_reset`

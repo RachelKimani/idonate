@@ -45,7 +45,7 @@
                   <h3>(By the Doctor)</h3>
                   <div class="form-row">
                   <div class="form-holder">
-                              <select name="Blood_type" id="blood_type" class="form-control" required>
+                              <select name="Blood_type" id="bloodType" class="form-control" required>
                                 <option value="">Blood Type</option>
                                   <option value="A">A</option>
                                   <option value="B">B</option>
@@ -57,15 +57,24 @@
                       <div>
                     <div class="form-row">
                       <div class="form-holder">
-                          <input type="text" class="form-control"  id="wgt" placeholder="Weight(kg)" name="wgt" required>
+                          <input type="text" class="form-control"  id="weight" placeholder="Weight(kg)" name="weight" required>
                       </div>
                       <div class="form-holder">
-                          <input type="text" class="form-control"  id="hgt" placeholder="Height(inches)" name="hgt" required>
+                          <input type="text" class="form-control"  id="height" placeholder="Height(inches)" name="height" required>
                       </div>
                     </div>
                      <div class="form-holder">
-                          <textarea name="comment" placeholder="Medical History  E.g allergies, special conditions e.t.c" rows="5" cols="100"></textarea></br></br>
+                          <textarea name="SpecialNotes" placeholder="Medical History  E.g allergies, special conditions e.t.c" rows="5" cols="100"></textarea></br></br>
                       </div>
+                      <div class="form-row">
+                      <div class="form-holder">
+                              <select name="status" id="status" class="form-control" required>
+                                <option value="">Status</option>
+                                  <option value="good">Good</option>
+                                  <option value="bad">Bad</option>
+                              </select>
+                      </div>
+                    </div>
                   </section>
                 </form>
     
