@@ -72,17 +72,17 @@
                     <div class="form-row">
                         <div class="form-holder">
                             <i class="zmdi zmdi-map"></i>
-                            <input autocomplete="new-password" type="text" class="form-control" placeholder="Coordinates" id="coordinates" name="coordinates">
+                            <input autocomplete="new-password" type="text" class="form-control" placeholder="Cordinates" id="cordinates" name="cordinates">
                         </div>
                         <div class="form-group">
 
                           <div class="form-holder">
                               <i class="zmdi zmdi-pin-drop"></i>
-                              <input type="text" class="form-control" placeholder="City" id="city" >
+                              <input type="text" class="form-control" placeholder="City" id="city" name="city" >
                           </div>
                             <div class="form-holder">
                                 <i class="zmdi zmdi-pin"></i>
-                                <input type="text" class="form-control" placeholder="Country" id="country">
+                                <input type="text" class="form-control" placeholder="Country" id="country" name="country">
                             </div>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                 var cod = latitude+","+ longitude;
                 
                 //document.getElementById('address').value = address;
-                 document.getElementById('coordinates').value = cod;
+                 document.getElementById('cordinates').value = cod;
                 document.getElementById('city').value = city;
                 document.getElementById('country').value = country;
                 //var mesg = "Address: " + address;
