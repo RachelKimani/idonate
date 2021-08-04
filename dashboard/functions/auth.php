@@ -370,4 +370,28 @@ function fetchMeds($id,$connect){
 	return $output;
 }
 
+function createFacility ($fName,$phone, $type, $address,$city, $country, $cordinates,$connect){
+                $query1 = "
+              INSERT INTO tbl_centers (name,address,city,country,cordinates,type,contact)
+              VALUES (:name,:address,:city,:country,:cordinates,:type,:contact)
+              ";
+              $statement1 = $connect->prepare($query1);
+              if($statement1->execute(
+                array(
+                  ':name'=>$fName,
+                  ':city'=>$city,
+                  ':address'=>$address,
+                  ':country'=>$country,
+                  ':type'=>$type,
+                  ':contact'=>$phone,
+                  ':cordinates'=>$cordinates
+                
+                                )
+              )){
+                echo "success";
+              } else {
+                echo "failed";
+              }
+}
+
  ?>
