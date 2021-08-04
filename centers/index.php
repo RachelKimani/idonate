@@ -72,28 +72,29 @@
                     <div class="form-row">
                         <div class="form-holder">
                             <i class="zmdi zmdi-map"></i>
-                            <input autocomplete="new-password" type="text" class="form-control" placeholder="Cordinates" id="cordinates" name="cordinates">
+                            <input autocomplete="new-password" type="text" class="form-control" placeholder="Cordinates" id="cordinates" name="cordinates" required>
                         </div>
                         <div class="form-group">
 
                           <div class="form-holder">
                               <i class="zmdi zmdi-pin-drop"></i>
-                              <input type="text" class="form-control" placeholder="City" id="city" name="city" >
+                              <input type="text" class="form-control" placeholder="City" id="city" name="city" required>
                           </div>
                             <div class="form-holder">
                                 <i class="zmdi zmdi-pin"></i>
-                                <input type="text" class="form-control" placeholder="Country" id="country" name="country">
+                                <input type="text" class="form-control" placeholder="Country" id="country" name="country" required>
                             </div>
                         </div>
                     </div>
                     <input type="text" name="facility" hidden>
                     
                   <div class="mt-4">
-                  <button type="submit" class="btn btn-block btn-primary btn-md font-weight-medium auth-form-btns" id="login"><i id="lodr"></i>&nbspSIGN IN&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
+                    <span id="error_result"></span>
+                <span id="loading" style="display: none">Loading Please Wait...</span>
+
+                  <button type="submit"id="btn" class="btn btn-block btn-primary btn-md font-weight-medium auth-form-btns" id="login"><i id="lodr"></i>&nbsp SUBMIT&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
                 </div>
                 </section>           
-                <span id="error_result"></span>
-                <span id="loading" style="display: none">Loading Please Wait...</span>
             </form>
 		</div>
 
