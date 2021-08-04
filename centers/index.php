@@ -37,7 +37,7 @@
       <img src="../dashboard/images/favicon.ico" alt="logo">
        <h2 class="text-primary">Add Facility</h2><br>
     </center>
-            <form action="" id="wizard" method="post">
+            <form id="facility" method="post">
 
         		<!-- SECTION 1 -->
                 <h4></h4>
@@ -78,23 +78,22 @@
 
                           <div class="form-holder">
                               <i class="zmdi zmdi-pin-drop"></i>
-                              <input type="text" class="form-control" placeholder="City" id="city" disabled>
+                              <input type="text" class="form-control" placeholder="City" id="city" >
                           </div>
                             <div class="form-holder">
                                 <i class="zmdi zmdi-pin"></i>
-                                <input type="text" class="form-control" placeholder="Country" id="country" disabled>
+                                <input type="text" class="form-control" placeholder="Country" id="country">
                             </div>
                         </div>
                     </div>
+                    <input type="text" name="facility" hidden>
                     
                   <div class="mt-4">
                   <button type="submit" class="btn btn-block btn-primary btn-md font-weight-medium auth-form-btns" id="login"><i id="lodr"></i>&nbspSIGN IN&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
                 </div>
-                </section>
-
-				
-               
+                </section>           
                 <span id="error_result"></span>
+                <span id="loading" style="display: none">Loading Please Wait...</span>
             </form>
 		</div>
 
@@ -122,10 +121,10 @@
                 var city = locs[0];
                 var country = locs[1];
                 var address = place.formatted_address;
-                var latitude = place.geometry.location.A;
-                var longitude = place.geometry.location.F;
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
                 var cod = latitude+","+ longitude;
-                alert(place.geometry.location.A);
+                
                 //document.getElementById('address').value = address;
                  document.getElementById('coordinates').value = cod;
                 document.getElementById('city').value = city;
