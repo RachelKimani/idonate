@@ -1,4 +1,4 @@
-<?php include 'functions/check_session.php'; ?>
+<?php include '../functions/check_session.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,33 +8,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>iDonate | Dashboard</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="vendors/feather/feather.css">
-  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../vendors/feather/feather.css">
+  <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css">
 
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css'>
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <link rel="stylesheet" href="../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="../js/select.dataTables.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link id="style1" rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <link id="style1" rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link href="../assets/img/favicon.ico" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <link rel="shortcut icon" href="../assets/img/apple-touch-icon.png" />
-  <link rel="stylesheet" href="./style.css">
+  <link href="../../assets/img/favicon.ico" rel="icon">
+  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="shortcut icon" href="../../assets/img/apple-touch-icon.png" />
 </head>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.php -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.php"><img src="../assets/img/idonate_logo.png" class="mr-2" alt="logo"/> iDonate</a>
-        <a class="navbar-brand brand-logo-mini" href="index.php"><img src="../assets/img/idonate_logo.png" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="../index.php"><img src="../../assets/img/idonate_logo.png" class="mr-2" alt="logo"/> iDonate</a>
+        <a class="navbar-brand brand-logo-mini" href="../index.php"><img src="../../assets/img/idonate_logo.png" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -54,7 +55,7 @@
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
-              <a class="nav-link" href="../"><i class="ti-home"></i></a>
+              <a class="nav-link" href="../../"><i class="ti-home"></i></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
@@ -110,10 +111,10 @@
                 if($_SESSION['img']!=''){
                   echo $_SESSION['img'];
                 }else {
-                  echo "../assets/img/user.png";
+                  echo "../../assets/img/user.png";
                 }
               }else {
-                echo "../assets/img/user.png";
+                echo "../../assets/img/user.png";
               }
                ?>" alt="profile"/>&nbsp<?php if(isset($_SESSION['fullName'])){
                 echo $_SESSION['fullName'];
@@ -123,7 +124,7 @@
                ?>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="profile/">
+              <a class="dropdown-item" href="../profile/">
                 <i class="ti-settings text-primary"></i>
                 Settings
               </a>
@@ -131,11 +132,11 @@
                 <i class="ti-help text-primary"></i>
                 Help
               </a>
-              <a class="dropdown-item" href="../login/lock.php">
+              <a class="dropdown-item" href="../../login/lock.php">
                 <i class="ti-lock text-primary"></i>
                 Lock
               </a>
-              <a class="dropdown-item" href="../logout/">
+              <a class="dropdown-item" href="../../logout/">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
@@ -249,7 +250,7 @@
             </div>
             <ul class="chat-list">
               <li class="list active">
-                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img src="../images/faces/face1.jpg" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Thomas Douglas</p>
                   <p>Available</p>
@@ -257,7 +258,7 @@
                 <small class="text-muted my-auto">19 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
+                <div class="profile"><img src="../images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
                 <div class="info">
                   <div class="wrapper d-flex">
                     <p>Catherine</p>
@@ -268,7 +269,7 @@
                 <small class="text-muted my-auto">23 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img src="../images/faces/face3.jpg" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Daniel Russell</p>
                   <p>Available</p>
@@ -276,7 +277,7 @@
                 <small class="text-muted my-auto">14 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
+                <div class="profile"><img src="../images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
                 <div class="info">
                   <p>James Richardson</p>
                   <p>Away</p>
@@ -284,7 +285,7 @@
                 <small class="text-muted my-auto">2 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img src="../images/faces/face5.jpg" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Madeline Kennedy</p>
                   <p>Available</p>
@@ -292,7 +293,7 @@
                 <small class="text-muted my-auto">5 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img src="../images/faces/face6.jpg" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Sarah Graves</p>
                   <p>Available</p>

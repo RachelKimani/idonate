@@ -1,37 +1,95 @@
-<!DOCTYPE html>
-<html lang="en" >
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>iDonate | Users</title>
-<!-- plugins:css -->
-<link rel="stylesheet" href="../vendors/feather/feather.css">
-<link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
-<link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
-<link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script r>
-
-</script>
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css'>
-<!-- endinject -->
-<!-- Plugin css for this page -->
-<link rel="stylesheet" href="../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-<link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
-<link rel="stylesheet" type="text/css" href="../js/select.dataTables.min.css">
-<!-- End plugin css for this page -->
-<!-- inject:css -->
-<link id="style1" rel="stylesheet" href="../css/vertical-layout-light/style.css">
-<!-- endinject -->
-<link href="../../assets/img/favicon.ico" rel="icon">
-<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-<link rel="shortcut icon" href="../../assets/img/apple-touch-icon.png" />
-<link rel="stylesheet" href="./style.css">
-</head>
-<body>
+<?php include '../inner/header.php'; ?>
 <!-- partial:index.partial.html -->
+<nav class="sidebar sidebar-offcanvas" id="sidebar" style="position:fixed">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="../index.php">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="../profile/">
+        <i class="fa fa-user menu-icon"></i>
+        <span class="menu-title">Profile</span>
+      </a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="#">
+        <i class="fa fa-users menu-icon"></i>
+        <span class="menu-title">Users</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="../centers">
+        <i class="fa fa-building menu-icon"></i>
+        <span class="menu-title">Facilities</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <i class="icon-location menu-icon"></i>
+        <span class="menu-title">Blood Drives</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+        <i class="fa fa-tint menu-icon"></i>
+        <span class="menu-title">Donation</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="tables">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="#">View Donations</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Dispatch</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Tests</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Reports</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+        <i class="fa fa-medkit menu-icon"></i>
+        <span class="menu-title">Transfusion</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="charts">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="#">Requisition</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Transfusion History</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <i class="fa fa-whatsapp menu-icon"></i>
+        <span class="menu-title">Chat</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <i class="icon-paper menu-icon"></i>
+        <span class="menu-title">User Manual</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
 <div class="container">
   <div class="row py-5">
     <div class="col-12">
+      <div class="row">
+        <div class="col-md-12">
+          <center><h2>Users</h2></center>
+        </div>
+
+      </div>
+      <div class="row">
+          <button type="button" name="button" class="btn btn-primary"><i class="fa fa-plus"></i>&nbspAdd New</button>
+      </div>
+      <p></p>
       <table id="example" class="table table-hover responsive nowrap" style="width:100%">
         <thead>
           <tr>
