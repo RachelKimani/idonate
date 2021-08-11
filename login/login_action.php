@@ -6,9 +6,8 @@
   if(isset($_POST['login'])){
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
-    $img = '';
 
-    login($email,$password,$connect,$img);
+    login($email,$password,$connect);
   }else if(isset($_GET["g_l"])){
     $email = mysqli_real_escape_string($mysqli, $_GET["g_l"]);
     $img = $_GET['g_img'];

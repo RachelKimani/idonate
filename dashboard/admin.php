@@ -16,19 +16,19 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
-        <i class="fa fa-trophy menu-icon"></i>
-        <span class="menu-title">Achievements</span>
+      <a class="nav-link" href="users/">
+        <i class="fa fa-users menu-icon"></i>
+        <span class="menu-title">Users</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
-        <i class="fa fa-calendar menu-icon"></i>
-        <span class="menu-title">Appointments</span>
+      <a class="nav-link" href="centers/">
+        <i class="fa fa-building menu-icon"></i>
+        <span class="menu-title">Facilities</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="camps/">
         <i class="icon-location menu-icon"></i>
         <span class="menu-title">Blood Drives</span>
       </a>
@@ -41,9 +41,10 @@
       </a>
       <div class="collapse" id="tables">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="#">Rapid Test</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Donation History</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Results</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">View Donations</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Dispatch</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Tests</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Reports</a></li>
         </ul>
       </div>
     </li>
@@ -55,7 +56,7 @@
       </a>
       <div class="collapse" id="charts">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="#">Rapid Test</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Requisition</a></li>
           <li class="nav-item"> <a class="nav-link" href="#">Transfusion History</a></li>
         </ul>
       </div>

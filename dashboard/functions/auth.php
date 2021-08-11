@@ -91,6 +91,7 @@ function login($email,$password,$connect,$img='',$key=''){
   }
 }
 
+
 //register function
 function register($userID,$firstName,$lastName,$username,$gender,$address,$email,$phone,$dob,$privateKey,$password,$dateCreated,$connect)
 {
@@ -385,10 +386,87 @@ function createFacility ($fName,$phone, $type, $address,$city, $country, $cordin
                   ':type'=>$type,
                   ':contact'=>$phone,
                   ':cordinates'=>$cordinates
-                
+
                                 )
               )){
                 echo "success";
+              } else {
+                echo "failed";
+              }
+}
+
+function updateFacility ($id,$fName,$phone, $type, $address,$city, $country, $cordinates,$connect){
+                $query1 = "
+              update tbl_centers set name=:name,address=:address,city=:city,country=:country,cordinates=:cordinates,type=:type,contact=:contact
+              where centerID=:id
+              ";
+              $statement1 = $connect->prepare($query1);
+              if($statement1->execute(
+                array(
+                  ':name'=>$fName,
+                  ':id'=>$id,
+                  ':city'=>$city,
+                  ':address'=>$address,
+                  ':country'=>$country,
+                  ':type'=>$type,
+                  ':contact'=>$phone,
+                  ':cordinates'=>$cordinates
+
+                                )
+              )){
+                echo "success";
+              } else {
+                echo "failed";
+              }
+}
+function updateF($id,$type,$connect){
+                $query1 = "
+              UPDATE tbl_centers set status = :status
+              where centerID=:id
+              ";
+              $statement1 = $connect->prepare($query1);
+              if($statement1->execute(
+                array(
+                  ':status'=>$type,
+                  ':id' => $id
+                )
+              )){
+                echo "success";
+              } else {
+                echo "failed";
+              }
+}
+function fetchFacility($id,$connect){
+  $sub_array = array();
+  $data = array();
+                $query1 = "
+              select * from tbl_centers where centerID=:id
+              ";
+              $statement1 = $connect->prepare($query1);
+              if($statement1->execute(
+                array(
+                  ':id' => $id
+                )
+              )){
+                  $result = $statement1->fetchAll();
+                  if (!$result) {
+                    echo "failed";
+                  } else {
+                    foreach($result as $row)
+                    {
+                      $sub_array['name']=$row['name'];
+                      $sub_array['id']=$row['centerID'];
+                      $sub_array['contact']=$row['contact'];
+                      $sub_array['type']=$row['type'];
+                      $sub_array['address']=$row['address'];
+                      $sub_array['cordinates']=$row['cordinates'];
+                      $sub_array['city']=$row['city'];
+                      $sub_array['country']=$row['country'];
+                      $data=$sub_array;
+                      $sub_array=[];
+                    }
+                    echo json_encode($data);
+                    }
               } else {
                 echo "failed";
               }
