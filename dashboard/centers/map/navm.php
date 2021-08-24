@@ -116,6 +116,11 @@
    {
        data = JSON.parse(JSON.stringify(data));
        console.log(data);
+      marker1=new L.marker([position.coords.latitude, position.coords.longitude], {icon: greenIcon}).bindPopup("Your Location").addTo(map);
+
+       markers.addLayer(marker1);
+          markerArray.push(marker1);
+
        for (var i = 0; i < data.length; i++) {
          loc = "<p><b>"+data[i]["name"]+"</b></p>";
          loc +="<hr>";
@@ -156,9 +161,7 @@
 
   //alert(htm);
 
-  L.marker([position.coords.latitude, position.coords.longitude], {icon: greenIcon}).bindPopup("Your Location").addTo(map);
-
-
+  
   var sidebar = L.control.sidebar('sidebar', {
       closeButton: true,
       position: 'left'
