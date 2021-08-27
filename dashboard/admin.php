@@ -28,7 +28,11 @@
       </a>
     </li>
     <li class="nav-item">
+<<<<<<< HEAD
       <a class="nav-link" href="centers/map">
+=======
+      <a class="nav-link" href="./centers/map">
+>>>>>>> 8b6f1642026be0b10e17bdd9a52a9e2b42988883
         <i class="icon-location menu-icon"></i>
         <span class="menu-title">Blood Drives</span>
       </a>
