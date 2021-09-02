@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>iDonate Pass</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="id-card" class="bcard">
+  <div class="id-card material-ui-shadowv">
+
+    <!-- \\ mugshot -->
+    <div class="id-card__mugshot">
+      <img src="http://www.travelcontinuously.com/wp-content/uploads/2018/04/empty-avatar.png" id="id-card-mugshot">
+    </div>
+    <!-- // mugshot -->
+
+    <!-- \\ foundation logo -->
+    <div class="id-card__logo logo">
+      <span class="logo__big">A+</span>
+      <span class="logo__small">Rees Alumasa</span>
+    </div>
+    <!-- // foundation logo -->
+
+
+    <!-- \\ experiment banner -->
+    <div class="id-card__banner">
+      <span class="id-card__banner-text">iDonate Rapid Pass</span>
+    </div>
+    <!-- // experiment banner -->
+
+    <!-- \\ details -->
+    <div class="id-card__details">
+      <div class="id-card__detail">
+        <span class="id-card__detail-label">Gender</span>
+        <span class="id-card__detail-value" id="id-card-name">Male</span>
+      </div>
+      <div class="id-card__detail">
+        <span class="id-card__detail-label">Weight</span>
+        <span class="id-card__detail-value" id="id-card-date-of-birth">56kg</span>
+      </div>
+      <div class="id-card__detail">
+        <span class="id-card__detail-label">Height</span>
+        <span class="id-card__detail-value">1.5m</span>
+      </div>
+      <div class="id-card__detail">
+        <span class="id-card__detail-label">Expires</span>
+        <span class="id-card__detail-value">08/01/2020</span>
+      </div>
+    </div>
+    <!-- \\ subject id -->
+    <div class="id-card__subject-id">
+
+    </div>
+    <!-- // subject id -->
+
+
+  </div>
+</div>
+
+<button id="download-button">Download</button>
+<!-- partial -->
+<script src='./html2canvas.min.js'></script>
+<script>
+
+
+
+
+var $btn = document.getElementById('download-button');
+$btn.addEventListener('mousedown', onScreenShotClick);
+
+function download( canvas, filename ) {
+	// create an "off-screen" anchor tag
+	const a = document.createElement('a');
+
+	// the key here is to set the download attribute of the a tag
+	a.download = filename;
+
+	// convert canvas content to data-uri for link. When download
+	// attribute is set the content pointed to by link will be
+	// pushed as "download" in HTML5 capable browsers
+	a.href = canvas.toDataURL("image/png;base64");
+
+	a.style.display = 'none';
+	document.body.appendChild( a );
+	a.click();
+	document.body.removeChild( a );
+}
+
+function onScreenShotClick(event){
+  const element = document.querySelector("#id-card");
+
+  html2canvas(element).then( ( canvas ) => {
+    download( canvas, 'rapidpass' );
+  });
+}
+
+</script>
+
+</body>
+</html>

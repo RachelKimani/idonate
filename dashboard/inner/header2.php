@@ -1,4 +1,87 @@
-<?php include '../../functions/check_session.php'; ?>
+<?php include '../../functions/check_session.php';
+include '../../db/db.php';
+$pre="N/A";
+$next= "N/A";
+$tot = 0;
+$pdif = 0;
+$ndif = 0;
+
+function daysBetween1($end, $start) {
+    $startTimeStamp = strtotime($start);
+    $endTimeStamp = strtotime($end);
+    $timeDiff = abs($endTimeStamp - $startTimeStamp);
+    $numberDays = $timeDiff/86400;  // 86400 seconds in one day
+    // and you might want to convert to integer
+    $numberDays = intval($numberDays);
+    return $numberDays;
+}
+function retrieveDonation1($connect,$uid){
+  $query = "Select date,DATE_ADD(date, INTERVAL 120 DAY) as exp FROM tbl_appointments where userid ='$uid' and (curdate() between date AND curdate() + 120) and status = 'donated' order by date desc limit 1";
+  $sub_array = array();
+  $data = array();
+  $statement = $connect->prepare($query);
+  if($statement->execute()){
+        $result = $statement->fetchAll();
+        if (!$result) {
+          //echo "failed";
+        } else {
+            foreach($result as $row)
+            {
+              $sub_array['date']=$row['date'];
+              $sub_array['expiry']=$row['exp'];
+              $data=$sub_array;
+              $sub_array=[];
+            }
+            return $data;
+          }
+    }
+
+}
+function countDonation1($connect,$uid){
+  $query = "SELECT count(*) as count FROM donation_report where userID = '$uid' and donation_status = 'donated'";
+  $count = 0;
+  $statement = $connect->prepare($query);
+  if($statement->execute()){
+        $result = $statement->fetchAll();
+        if (!$result) {
+          //echo "failed";
+        } else {
+          foreach($result as $row)
+          {
+             $count = $row['count'];
+          }
+
+          }
+    }
+    return $count;
+}
+if(countDonation1($connect,$_SESSION['userID'])>0){
+  $tot=countDonation1($connect,$_SESSION['userID']);
+  $donating = retrieveDonation1($connect,$_SESSION['userID']);
+  if(!empty($donating)){
+    $now = date("Y-m-d H:i:s");
+    $dt = new DateTime(date("Y-m-d H:i:s"));
+    $pre = $donating['date'];
+    $next = $donating['expiry'];
+    $ndif =   daysBetween1($next,$now);
+    $pdif = daysBetween1($now,$pre);
+  } else {
+    $next= "Safe Zone";
+  }
+
+  //$pdif =  round(($now - strtotime($pre))(60 * 60 * 24));
+  //$ndif =  round((strtotime($next)-$now)/(60 * 60 * 24));
+}else {
+  $next= "Safe Zone";
+}
+
+if(!isset($_SESSION)) {session_start();}
+$_SESSION['pre'] = $pre;
+$_SESSION['next'] = $next;
+$_SESSION['pdif'] = $pdif;
+$_SESSION['ndif'] = $ndif;
+$_SESSION['tot'] = $tot;
+?>
 <!DOCTYPE html>
 <html lang="en">
 

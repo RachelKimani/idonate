@@ -34,33 +34,24 @@
     <center>
       <img src="../images/favicon.ico" alt="logo">
        <h2 class="text-primary">iDonate Rapid Pass</h2><br>
-       <p>Step <span id="cnt">1</span> of 5</p>
+       <p id="hdr" style="display:none">Step <span id="cnt">1</span> of 5</p>
 
     </center>
-            <form action="" id="wizard" method="post">
+            <form action="submit.php" id="wizard" method="post">
               <!-- SECTION 1 -->
               <h4></h4>
               <section>
-                <h2 id="error">Dear name, Let's get you ready for donation by completing the steps below.</h2>
+                <h2 id="error">Dear <?php echo $_SESSION['fullName']; ?>, Let's get you ready for donation by completing the steps below.</h2>
                 <h3>Consent</h3>
                 <div class="form-row">
                   <div class="form-holders">
                     <div class="form-check form-groupsa">
-                      <input class="form-check-input" type="checkbox" value="" id="consent" name="consent[]">
+                      <input class="form-check-input" type="checkbox" value="yes" id="consent" name="consent[]">
                       <label class="form-check-label" for="consent">
                         I acknowledge that I am donating within 24 hours from now.
                       </label>
                     </div>
                   </div>
-                </div>
-                <h3>Blood drive or donation center.</h3>
-                <div class="form-row w-100">
-                    <div class="form-holder">
-                        <i class="zmdi zmdi-map"></i>
-                        <select class="js-example-basic-single form-control" id='address' name="address">
-                                <?php echo fetchCenter($connect); ?>
-                        </select>
-                    </div>
                 </div>
               </section>
         		<!-- SECTION 2 -->
@@ -427,19 +418,6 @@
                 <h4></h4>
                 <section>
                   <h3>Lastly,...</h3>
-                  <div class="form-row">
-                        <div class="form-holder">
-                          <p>13.  Do you consider your blood safe to transfuse to a patient?</p>
-                        </div>
-                        <div class="funkyradio-primary">
-                           <input type="radio" name="qb13" id="rb13a" value="yes" required="required" />
-                           <label for="rb13a">Yes</label>
-                       </div>
-                        <div class="funkyradio-primary">
-                           <input type="radio" name="qb13" id="rb13b" value="no" required="required" />
-                           <label for="rb13b">No</label>
-                       </div>
-                     </div>
                     <h3>DECLARATION (Please read this before you submit the form)</h3>
                     <p>I hereby consent to the following</p><br><br>
                     <div class="const">
@@ -447,15 +425,10 @@
                           <li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI declare that I have answered all the questions truthfully and accurately.
                         <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI understand that my blood will be tested for HIV, Hepatitis B & C, and Syphilis and the results of my tests may be obtained from my donations tab or the nearest center from the donation location.
                         <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI understand that should any of the screening tests give a reactive result, I will be contacted by use any communication medium(s) to send me <b>important information</b>. Such medium(s) shall include but not limited to e-mail, post office, mobile telephone and/or fixed telephone, and offered counselling to make an informed decision about further confirmatory testing and management.
-                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI hereby give consent to KNBTS to use the contact details provided in this form to communicate to me as the
-                          need may be.
-                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI understand the blood may be used for scientific research, main objective being to improve the safety of the blood supply to patients.
-                        <br><br></li><li><img width="30px" height="30px" src="../images/clipboard.jpeg" >&nbspI consent to give blood; I understand that it may be used for transfusion for the benefit of others.</li>
-                        </ul><br><br>
                         <div class="form-row">
                           <div class="form-holders">
                             <div class="form-check form-groupsa">
-                              <input class="form-check-input" type="checkbox" value="" id="consent2" name="consent2[]" required>
+                              <input class="form-check-input" type="checkbox" value="yes" id="consent2" name="consent2" required>
                               <label class="form-check-label" for="consent">
                                 I agree to the above statements.
                               </label>

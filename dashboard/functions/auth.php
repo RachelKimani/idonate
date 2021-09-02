@@ -1,5 +1,6 @@
 <?php
 function login($email,$password,$connect,$img='',$key=''){
+  invalidatePass1($connect);
   date_default_timezone_set('Africa/Nairobi');
   $t=time();
   $loginTime =date("Y-m-d h:i:s",$t);
@@ -45,7 +46,37 @@ function login($email,$password,$connect,$img='',$key=''){
               } else {
                 $img1 = '/idonate/dashboard/profile/'.$row['profileUrl'];
               }
+              $pre="N/A";
+              $next= "N/A";
+              $tot = 0;
+              $pdif = 0;
+              $ndif = 0;
+              if(countDonation($connect,$row['userID'])>0){
+                $tot=countDonation($connect,$row['userID']);
+                $donating = retrieveDonation($connect,$row['userID']);
+                if(!empty($donating)){
+                  $now = date("Y-m-d H:i:s");
+                  $dt = new DateTime(date("Y-m-d H:i:s"));
+                  $pre = $donating['date'];
+                  $next = $donating['expiry'];
+                  $ndif =   daysBetween($next,$now);
+                  $pdif = daysBetween($now,$pre);
+                } else {
+                  $next= "Safe Zone";
+                }
+
+                //$pdif =  round(($now - strtotime($pre))(60 * 60 * 24));
+                //$ndif =  round((strtotime($next)-$now)/(60 * 60 * 24));
+              }else {
+                $next= "Safe Zone";
+              }
+
               if(!isset($_SESSION)) {session_start();}
+              $_SESSION['pre'] = $pre;
+              $_SESSION['next'] = $next;
+              $_SESSION['pdif'] = $pdif;
+              $_SESSION['ndif'] = $ndif;
+              $_SESSION['tot'] = $tot;
               $_SESSION['fullName'] = $row['firstName']." ".$row['lastName'];
               $_SESSION['firstName'] = $row['firstName'];
               $_SESSION['lastName'] = $row['lastName'];
@@ -90,8 +121,78 @@ function login($email,$password,$connect,$img='',$key=''){
     }
   }
 }
+function daysBetween($end, $start) {
+    $startTimeStamp = strtotime($start);
+    $endTimeStamp = strtotime($end);
+    $timeDiff = abs($endTimeStamp - $startTimeStamp);
+    $numberDays = $timeDiff/86400;  // 86400 seconds in one day
+    // and you might want to convert to integer
+    $numberDays = intval($numberDays);
+    return $numberDays;
+}
+function retrieveDonation($connect,$uid){
+  $query = "Select date,DATE_ADD(date, INTERVAL 120 DAY) as exp FROM tbl_appointments where userid ='$uid' and (curdate() between date AND curdate() + 120) and status = 'donated' order by date desc limit 1";
+  $sub_array = array();
+  $data = array();
+  $statement = $connect->prepare($query);
+  if($statement->execute()){
+        $result = $statement->fetchAll();
+        if (!$result) {
+          //echo "failed";
+        } else {
+            foreach($result as $row)
+            {
+              $sub_array['date']=$row['date'];
+              $sub_array['expiry']=$row['exp'];
+              $data=$sub_array;
+              $sub_array=[];
+            }
+            return $data;
+          }
+    }
 
+}
+function countDonation($connect,$uid){
+  $query = "SELECT count(*) as count FROM donation_report where userID = '$uid' and donation_status = 'donated'";
+  $count = 0;
+  $statement = $connect->prepare($query);
+  if($statement->execute()){
+        $result = $statement->fetchAll();
+        if (!$result) {
+          //echo "failed";
+        } else {
+          foreach($result as $row)
+          {
+             $count = $row['count'];
+          }
 
+          }
+    }
+    return $count;
+}
+function invalidatePass1($connect){
+  $query1 = 'UPDATE tbl_pass set status="Expired" WHERE now() NOT BETWEEN date and (date + INTERVAL 24 HOUR) ORDER by date DESC';
+  $statement1 = $connect->prepare($query1);
+  if($statement1->execute()){
+    $count1 = $statement1->rowCount();
+    if($count1>0){
+      //return "false";
+    } else {
+      //return "true";
+    }
+  }
+
+  $query2 = 'UPDATE `tbl_appointments` SET `status` = "missed" WHERE (`tbl_appointments`.`status` = "Accepted" OR `tbl_appointments`.`status` = "pending") AND date < CURDATE()';
+  $statement2 = $connect->prepare($query2);
+  if($statement2->execute()){
+    $count2 = $statement2->rowCount();
+    if($count2>0){
+      //return "false";
+    } else {
+      //return "true";
+    }
+  }
+}
 //register function
 function register($userID,$firstName,$lastName,$username,$gender,$address,$email,$phone,$dob,$privateKey,$password,$dateCreated,$connect)
 {
@@ -470,6 +571,92 @@ function fetchFacility($id,$connect){
               } else {
                 echo "failed";
               }
+}
+
+
+
+function registerAdmin($userID,$firstName,$lastName,$username,$gender,$address,$email,$phone,$dob,$privateKey,$password,$userType,$dateCreated,$connect)
+{
+  $query = "
+  INSERT INTO tbl_users (userID,firstName,lastName,username,gender,address,email,phone,dob)
+  VALUES (:userID,:firstName,:lastName,:username,:gender,:address,:email,:phone,:dob)
+  ";
+  $statement = $connect->prepare($query);
+  if($statement->execute(
+    array(
+      ':userID'		=>	$userID,
+      ':firstName'		=>	$firstName,
+      ':lastName'		=>	$lastName,
+      ':username'		=>	$username,
+      ':gender'		=>	$gender,
+      ':address'		=>	$address,
+      ':email'		=>	$email,
+      ':phone'		=>	$phone,
+      ':dob'		=>	 date_format(date_create($dob),"Y-m-d")
+    )
+  )){
+    $query1 = "
+    INSERT INTO tbl_auth (userID,privateKey,password,dateCreated)
+    VALUES (:userID,:privateKey,:password,:dateCreated)
+    ";
+    $statement1 = $connect->prepare($query1);
+    if($statement1->execute(
+      array(
+        ':userID'		=>	$userID,
+        ':privateKey'		=>	$privateKey,
+        ':password'		=>	$password,
+        ':dateCreated' => $dateCreated
+      )
+    )){
+      $query2 = "
+      INSERT INTO tbl_roles (userID,userType)
+      VALUES (:userID,:userType)
+      ";
+      $statement2 = $connect->prepare($query2);
+      if($statement2->execute(
+        array(
+          ':userID'		=>	$userID,
+          ':userType'		=>	$userType
+        )
+      )){
+        $body = "";
+        $heading = "Email Verification";
+        $to = $email;
+        $code = gen_uuid();
+        $name = $firstName;
+        $link = "http://localhost/idonate/register/verifyme.php?xd=".$code."&& email=".$email."";
+        $posts=array();
+        $posts['email'] = $email;
+        $posts['code'] = $code;
+        $filename=$code.'.json';
+        $fileSavingResult = saveFile($filename, $posts);
+        if ( $fileSavingResult == 1){
+            //echo "<tr><td><br/>File was saved!<br/><br/></td></tr>";
+        } else if ($fileSavingResult == -2){
+            //echo "<tr><td><br/>An error occured during saving file!<br/><br/></td></tr>";
+        } else if ($fileSavingResult == -1){
+            //echo "<tr><td><br/>Wrong file name!<br/><br/></td></tr>";
+          }
+        ob_start();                      // start capturing output
+        include('verify_body.php');   // execute the file
+        $body = ob_get_contents();    // get the contents from the buffer
+        ob_end_clean();
+
+        if(sendMail($to,$body,$heading) == 'sent'){
+          echo "success";
+        } else {
+          echo "Registration failed at step 4";
+        }
+
+      }else {
+        echo "Registration failed at step 3";
+      }
+    }else {
+      echo "Registration failed at step 2";
+    }
+  } else {
+    echo "Registration failed at step 1";print_r($statement->errorInfo());
+  }
 }
 
  ?>

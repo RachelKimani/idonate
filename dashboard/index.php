@@ -1,9 +1,14 @@
 <?php include 'header.php'; ?>
 
   <?php
-  if($_SESSION['userType']=='admin'){
+  if($_SESSION['userType']=='adminw'){
     include 'admin.php';
-  }else {
+  } else if($_SESSION['userType']='hospitalagent'){
+    include 'hospitalagent.php';
+  } else if($_SESSION['userType']=='bankagent'){
+    include 'bankagent.php';
+  }
+  else {
     include 'dashboard.php';
   }
    ?>

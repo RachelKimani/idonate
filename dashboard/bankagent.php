@@ -16,18 +16,6 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="users/">
-        <i class="fa fa-users menu-icon"></i>
-        <span class="menu-title">Users</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="centers/">
-        <i class="fa fa-building menu-icon"></i>
-        <span class="menu-title">Facilities</span>
-      </a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" href="./centers/map">
         <i class="icon-location menu-icon"></i>
         <span class="menu-title">Blood Drives</span>
@@ -42,22 +30,9 @@
       <div class="collapse" id="tables">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="#">View Donations</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Dispatch</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Dispatch Blood</a></li>
           <li class="nav-item"> <a class="nav-link" href="#">Tests</a></li>
           <li class="nav-item"> <a class="nav-link" href="#">Reports</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-        <i class="fa fa-medkit menu-icon"></i>
-        <span class="menu-title">Transfusion</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="charts">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="#">Requisition</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Transfusion History</a></li>
         </ul>
       </div>
     </li>
@@ -75,6 +50,7 @@
     </li>
   </ul>
 </nav>
+<!-- partial -->
 <!-- partial -->
 <div class="main-panel">
   <div class="content-wrapper">

@@ -18,7 +18,23 @@
     $t=time();
     $dateCreated =date("Y-m-d h:i:s",$t);
     register($userID,$firstName,$lastName,$username,$gender,$address,$email,$phone,$dob,$privateKey,$password,$dateCreated,$connect);
-  } else {
+  } else if(isset($_POST['registerAdmin'])) {
+    $userID = userID();
+    $firstName = trim($_POST['firstName']);
+    $lastName = trim($_POST['lastName']);
+    $username = trim($_POST['username']);
+    $gender = trim($_POST['gender']);
+    $address = "Nairobi";
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
+    $dob = trim($_POST['dob']);
+    $privateKey = gen_uuid();
+    $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+    $t=time();
+    $dateCreated =date("Y-m-d h:i:s",$t);
+    registerAdmin($userID,$firstName,$lastName,$username,$gender,$address,$email,$phone,$dob,$privateKey,$password,trim($_POST['type']),$dateCreated,$connect);
+  }
+  else {
     echo "No data received";
   }
  ?>
