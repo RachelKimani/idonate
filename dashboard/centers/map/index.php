@@ -36,19 +36,10 @@ if($_SESSION['userType']=='admin'){
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+        <a class="nav-link" href="../../appointments/">
           <i class="fa fa-tint menu-icon"></i>
-          <span class="menu-title">Donation</span>
-          <i class="menu-arrow"></i>
+          <span class="menu-title">Donations</span>
         </a>
-        <div class="collapse" id="tables">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="#">View Donations</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Dispatch</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Tests</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Reports</a></li>
-          </ul>
-        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
@@ -101,7 +92,7 @@ if($_SESSION['userType']=='admin'){
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../appointments">
+        <a class="nav-link" href="../../appointments/">
           <i class="fa fa-calendar menu-icon"></i>
           <span class="menu-title">Appointments</span>
         </a>

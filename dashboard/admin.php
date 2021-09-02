@@ -34,19 +34,10 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+      <a class="nav-link" href="./appointments/">
         <i class="fa fa-tint menu-icon"></i>
-        <span class="menu-title">Donation</span>
-        <i class="menu-arrow"></i>
+        <span class="menu-title">Donations</span>
       </a>
-      <div class="collapse" id="tables">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="#">View Donations</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Dispatch</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Tests</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Reports</a></li>
-        </ul>
-      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
@@ -168,7 +159,7 @@
                           $data = [];
                           foreach ($types as $value) {
                             $stock =0;
-                            $queryxa = "SELECT sum(quantity) as qty FROM `donation_report` where bloodType = '$value' and donation_venue = '".$rowx['name']."'  ";
+                            $queryxa = "SELECT sum(quantity) as total_stock FROM donation_report r LEFT JOIN tbl_medicinfo m on m.userID = r.userID where m.bloodType = '$value' and r.donation_venue = '".$rowx['name']."'  ";
                             $statementxa = $connect->prepare($queryxa);
                             if($statementxa->execute()){
                               $countxa = $statementxa->rowCount();
@@ -176,7 +167,7 @@
                                 if (!$resultxa) {
                                   $stock =0;
                                 } else {
-                                  foreach($resultx as $rowxa)
+                                  foreach($resultxa as $rowxa)
                                   {
                                     if($rowxa['total_stock']==''){
                                       $stock =0;

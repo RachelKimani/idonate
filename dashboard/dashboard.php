@@ -22,7 +22,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="./appointments">
         <i class="fa fa-calendar menu-icon"></i>
         <span class="menu-title">Appointments</span>
       </a>

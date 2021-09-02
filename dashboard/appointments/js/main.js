@@ -32,7 +32,78 @@ $(document).ready(function (e) {
         display: "inline-block"
       });
 
+      $( "#facility1" ).submit(function( event ) {
+        event.preventDefault();
+        $('#lodr').html("<i class='fa fa-spinner fa-pulse text-right'></i><span class='sr-only'>Loading...</span>");
+        var form_data = $('#facility1').serialize();
+        $.ajax({
+          url:"fetch_drives.php",
+          method:"POST",
+          data:form_data,
+          success:function(data)
+          {
 
+            if(data == 'success'){
+                tabf.ajax.reload();
+                $('#lodr').html("");
+                swal({
+                  title: 'Success!',
+                  text: 'Apponintment Created',
+                  icon: 'success',
+                  button: {
+                    text: "Ok",
+                    value: true,
+                    visible: true,
+                    className: "btn btn-primary"
+                  }
+                })
+              } else {
+                $('#lodr').html("");
+                swal({
+                  title: 'Error!',
+                  text: 'Failed, You have an existing appointment. Please try again.',
+                  icon: 'error',
+                  button: {
+                    text: "Ok",
+                    value: true,
+                    visible: true,
+                    className: "btn btn-primary"
+                  }
+                })
+            }
+          },error: function (xhr, ajaxOptions, thrownError){
+            if(xhr.responseText=='success'){
+
+              tabf.ajax.reload();
+              $('#lodr').html("");
+              swal({
+                title: 'Success!',
+                text: 'Apponintment Created',
+                icon: 'success',
+                button: {
+                  text: "Ok",
+                  value: true,
+                  visible: true,
+                  className: "btn btn-primary"
+                }
+              })
+            } else {
+              $('#lodr').html("");
+              swal({
+                title: 'Error!',
+                text: 'Failed, You have an existing appointment. Please try again.',
+                icon: 'error',
+                button: {
+                  text: "Ok",
+                  value: true,
+                  visible: true,
+                  className: "btn btn-primary"
+                }
+              })
+            }
+          }
+        })
+      });
   //disable donations
   $(document).on('click', '.complete', function () {
     var appointment_id = $(this).attr('aid');

@@ -27,7 +27,7 @@ if($_SESSION['userType']=='admin'){
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="../profile">
           <i class="fa fa-user menu-icon"></i>
           <span class="menu-title">Profile</span>
         </a>
@@ -50,20 +50,11 @@ if($_SESSION['userType']=='admin'){
           <span class="menu-title">Blood Drives</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
           <i class="fa fa-tint menu-icon"></i>
-          <span class="menu-title">Donation</span>
-          <i class="menu-arrow"></i>
+          <span class="menu-title">Donations</span>
         </a>
-        <div class="collapse" id="tables">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="#">View Donations</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Dispatch</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Tests</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Reports</a></li>
-          </ul>
-        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
@@ -104,7 +95,7 @@ if($_SESSION['userType']=='admin'){
         </a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="../profile">
           <i class="fa fa-user menu-icon"></i>
           <span class="menu-title">Profile</span>
         </a>
@@ -278,7 +269,7 @@ a.href = '../css/vertical-layout-' + localStorage.getItem("mode") + '/style.css'
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md" role="document">
-    <form class="form-sample" id="facility">
+    <form class="form-sample" id="facility1" method="post">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add Facility</h5>
@@ -295,7 +286,7 @@ a.href = '../css/vertical-layout-' + localStorage.getItem("mode") + '/style.css'
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="btn" ><i id="lodr"></i>&nbsp Save changes&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
+        <button type="submit" class="btn btn-primary" id="btn2" ><i id="lodr"></i>&nbsp Save changes&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
       </div>
 
     </div>

@@ -6,7 +6,7 @@
     <div class="form-group row">
       <div class="form-holder col-md-9">
               <label for="type">Search Facility/Camp</label>
-              <select name="facility" id="type" class="js-example-basic-single form-control" required>
+              <select name="facility" id="type" class="form-control" required>
                   <option value="">Select Facility</option>
                   <?php echo getFacilities($connect); ?>
               </select>

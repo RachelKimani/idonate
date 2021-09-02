@@ -65,6 +65,9 @@ if(countDonation1($connect,$_SESSION['userID'])>0){
     $next = $donating['expiry'];
     $ndif =   daysBetween1($next,$now);
     $pdif = daysBetween1($now,$pre);
+    if($ndif==0){
+      $next= "Safe Zone";
+    }
   } else {
     $next= "Safe Zone";
   }
