@@ -1,4 +1,13 @@
 <?php include '../inner/header.php'; ?>
+<link href="../appointments/src/popupwindow.css" rel="stylesheet" type="text/css">
+<style>
+.example_content {
+    display : none;
+}
+div.popupwindow_container{
+  z-index: 1052!important;
+}
+</style>
 <!-- partial:index.partial.html -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar" style="position:fixed">
   <ul class="nav">
@@ -33,19 +42,10 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+      <a class="nav-link" href="../appointments/">
         <i class="fa fa-tint menu-icon"></i>
-        <span class="menu-title">Donation</span>
-        <i class="menu-arrow"></i>
+        <span class="menu-title">Donations</span>
       </a>
-      <div class="collapse" id="tables">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="#">View Donations</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Dispatch</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Tests</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Reports</a></li>
-        </ul>
-      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
@@ -87,7 +87,22 @@
 
       </div>
       <div class="row">
-          <button type="button" name="button" class="btn btn-primary"><i class="fa fa-plus"></i>&nbspAdd New</button>
+          <button type="button" name="button" class="btn btn-primary test" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>&nbspAdd New</button>
+      </div>
+      <br><br>
+      <div class="row">
+        <div class="col-md-3">
+          <input type="checkbox" class="filter" value="Deleted"/>&nbspShow Deleted Users</label>
+          <label>
+        </div>
+        <div class="col-md-3">
+          <input type="checkbox" class="filter" value="Enabled" checked/>&nbspShow Active Users</label>
+        </div>
+        <div class="col-md-3">
+          <input type="checkbox" class="filter" value="Disabled"/>&nbspShow Disabled Users</label>
+        </div>
+
+
       </div>
       <p></p>
       <table id="example" class="table table-hover responsive nowrap" style="width:100%">
@@ -109,7 +124,9 @@
     </div>
   </div>
 </div>
-
+<div id="basic-demo" class="example_content">
+          <?php include '../adduser.php'; ?>
+</div>
 <style media="screen">
   div#address{
     max-width: 200px;
@@ -125,7 +142,11 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script src='https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js'></script>
+<script src="../../register/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
 <script  src="./script.js"></script>
+<script  src="./main.js"></script>
+<script src="../appointments/src/popupwindow.js"></script>
+<script src="../vendors/sweetalert/sweetalert.min.js"></script>
 <script>
 $(document).ready(function() {
 

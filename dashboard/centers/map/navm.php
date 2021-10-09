@@ -128,7 +128,7 @@
          loc +="<p>Address: "+data[i]["address"]+"</p>";
          loc +=" <p>Contact: "+data[i]["contact"]+"</p>";
          loc += "<p><button class='btn btn-primary btn-sm' onclick=\"window.location.href='navigation?fdst="+data[i]['name']+"&lat="+lat+"&lng="+lng+"&dlat="+data[i]['lat']+"&dlng="+data[i]['lng']+"'\">Directions &nbsp<i class='fa fa-map-o'></i></button> &nbsp";
-         loc += "<button class='btn btn-info btn-sm'>Book Appointment &nbsp<i class='fa fa-calendar'></i></button></p>";
+         loc += "<a href='../../appointments' target='_top'><button class='btn btn-info btn-sm'>Book Appointment &nbsp<i class='fa fa-calendar'></i></button></a></p>";
          marker = new L.marker([data[i]["lat"], data[i]["lng"]],{icon: redIcon})
          .bindPopup(loc).addTo(map);
          /*marker = new L.marker([data[i]["lat"], data[i]["lng"]],{icon: redIcon})
@@ -161,7 +161,7 @@
 
   //alert(htm);
 
-  
+
   var sidebar = L.control.sidebar('sidebar', {
       closeButton: true,
       position: 'left'

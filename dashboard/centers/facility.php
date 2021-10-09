@@ -14,4 +14,7 @@ if(isset($_POST["updatef"])){
 if(isset($_POST["fetchf"])){
 	fetchFacility($_POST["id"],$connect);
 }
- ?>
+if(isset($_POST["assf"])){
+	fetchFacility(uniqid(),$_POST["id"],$_POST["uid"],$connect);
+}
+?>

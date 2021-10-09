@@ -3,7 +3,12 @@
   <?php
   if($_SESSION['userType']=='admin'){
     include 'admin.php';
-  }else {
+  } else if($_SESSION['userType']=='hospitalagent'){
+    include 'hospitalagent.php';
+  } else if($_SESSION['userType']=='bankagent'){
+    include 'bankagent.php';
+  }
+  else {
     include 'dashboard.php';
   }
    ?>

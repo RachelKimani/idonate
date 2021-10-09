@@ -22,7 +22,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="./appointments">
         <i class="fa fa-calendar menu-icon"></i>
         <span class="menu-title">Appointments</span>
       </a>
@@ -99,7 +99,7 @@
            <div class="justify-content-end d-flex">
             <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
               <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-               <i class="mdi mdi-calendar"></i> Today (10 Jan 2021)
+               <i class="mdi mdi-calendar"></i> Today (<?php echo date("d M Y"); ?>)
               </button>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
                 <a class="dropdown-item" href="#">January - March</a>
@@ -138,8 +138,12 @@
             <div class="card card-tale">
               <div class="card-body">
                 <p class="mb-4">Next Safe Donation Date</p>
-                <p class="fs-30 mb-2">2nd Dec 2021</p>
-                <p>30 days</p>
+                <p class="fs-30 mb-2"><?php if(isset($_SESSION['next'])){
+                  echo $_SESSION['next'];
+                } ?></p>
+                <p><?php if(isset($_SESSION['ndif'])){
+                  echo $_SESSION['ndif'];
+                } ?> days</p>
               </div>
             </div>
           </div>
@@ -147,8 +151,12 @@
             <div class="card card-dark-blue">
               <div class="card-body">
                 <p class="mb-4">Last Donation</p>
-                <p class="fs-30 mb-2">5th Jun 2021</p>
-                <p>42 days</p>
+                <p class="fs-30 mb-2"><?php if(isset($_SESSION['pre'])){
+                  echo $_SESSION['pre'];
+                } ?></p>
+                <p><?php if(isset($_SESSION['pdif'])){
+                  echo $_SESSION['pdif'];
+                } ?> days</p>
               </div>
             </div>
           </div>
@@ -158,7 +166,9 @@
             <div class="card card-light-blue">
               <div class="card-body">
                 <p class="mb-4">Number of Donations</p>
-                <p class="fs-30 mb-2">3</p>
+                <p class="fs-30 mb-2"><?php if(isset($_SESSION['tot'])){
+                  echo $_SESSION['tot'];
+                } ?></p>
               </div>
             </div>
           </div>
@@ -172,6 +182,78 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title mb-0">Donation Histoy</p>
+            <div class="table-responsive">
+              <table class="table table-striped table-borderless" id="donhistory">
+                <thead>
+                  <tr>
+                    <th>Center</th>
+                    <th>Donation Type</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                    $queryx = "SELECT * FROM `donation_report` where userID = '".$_SESSION['userID']."' order by appointment_date desc";
+                    $statementx = $connect->prepare($queryx);
+                    if($statementx->execute()){
+                      $countx = $statementx->rowCount();
+                        $resultx = $statementx->fetchAll();
+                        if (!$resultx) {
+                          echo '<tr><td colspan="5">No donation history for this user</td></tr>';
+                        } else {
+                          foreach($resultx as $rowx)
+                          {
+                            if ($rowx['donation_status']!='') {
+                              if($rowx['donation_type']=="1"){
+                                $type = "Red Blood Cells";
+                              } else {
+                                $type = "Whole Blood";
+                              }
+                              if($rowx['transID']!=''){
+                                $st ='<td class="font-weight-medium"><div class="badge badge-info">Transfused</div></td>';
+                              }else {
+                                if($rowx['donation_status']!='Discarded'){
+                                  if($rowx['donation_status']=="donated"){
+                                    $st = '<td class="font-weight-medium"><div class="badge badge-success">'.ucwords($rowx['donation_status']).'</div></td>';
+                                  } elseif ($rowx['donation_status']=='donating') {
+                                    $st='<td class="font-weight-medium"><div class="badge badge-warning">'.ucwords($rowx['donation_status']).'</div></td>';
+                                  } else {
+                                    $st='<td class="font-weight-medium"><div class="badge badge-danger">'.ucwords($rowx['donation_status']).'</div></td>';
+                                  }
+                                }else{
+                                  $st ='<td class="font-weight-medium"><div class="badge badge-danger">'.ucwords($rowx['donation_status']).'</div></td>';
+                                }
+                              }
+                              echo "<tr>
+                                <td>".$rowx['donation_venue']."</td>
+                                <td class='font-weight-bold'>".$type."</td>
+                                <td>".date_format(date_create($rowx['appointment_date']),'d M Y')."</td>
+                                 ".$st."
+                                 <td><a class='btn btn-info btn-sm journey'>View Journey</a></td></td>
+                              </tr>";
+                            }
+
+                          }
+                        }
+                      } else {
+                        ?><tr><td colspan="5">No donation history for this user</td></tr><?php
+                      }
+                   ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="row">
       <div class="col-md-7 grid-margin stretch-card">
@@ -248,54 +330,10 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12 grid-margin stretch-card">
-        <div class="card">
-          <div class="card-body">
-            <p class="card-title mb-0">Blood Journey</p>
-            <div class="table-responsive">
-              <table class="table table-striped table-borderless">
-                <thead>
-                  <tr>
-                    <th>Center</th>
-                    <th>Donation Type</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>iWorld Blood Drive, Nairobi</td>
-                    <td class="font-weight-bold">RBCs</td>
-                    <td>21 Jan 2019</td>
-                    <td class="font-weight-medium"><div class="badge badge-success">Transfused</div></td>
-                  </tr>
-                  <tr>
-                    <td>iWorld Blood Drive, Nairobi</td>
-                    <td class="font-weight-bold">Whole Blood</td>
-                    <td>30 Aug 2019</td>
-                    <td class="font-weight-medium"><div class="badge badge-success">Transfused</div></td>
-                  </tr>
-                  <tr>
-                    <td>Homeway Regional Center</td>
-                    <td class="font-weight-bold">Platelets</td>
-                    <td>28 Sep 2020</td>
-                    <td class="font-weight-medium"><div class="badge badge-danger">Discarded</div></td>
-                  </tr>
-                  <tr>
-                    <td>New Hope Health center</td>
-                    <td class="font-weight-bold">Whole Blood</td>
-                    <td>30 Jun 2021</td>
-                    <td class="font-weight-medium"><div class="badge badge-warning">Processing</div></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
 
-    </div>
 
 
   </div>
+  <script>
+    $("#donhistory").datatable();
+  </script>
